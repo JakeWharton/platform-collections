@@ -23,7 +23,7 @@ jobs:
           java-version: 19
       - uses: gradle/gradle-build-action@v2
 
-      - run: ./gradlew build
+      - run: ./gradlew build dokkaHtml
 
       - name: Deploy docs to website
         if: ${{ github.ref == 'refs/heads/trunk' && github.repository == 'JakeWharton/platform-collections' }}
