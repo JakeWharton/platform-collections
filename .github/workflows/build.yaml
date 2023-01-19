@@ -26,7 +26,7 @@ jobs:
       - run: ./gradlew build
 
       - name: Deploy docs to website
-        if: ${{ github.ref == 'refs/heads/trunk' && github.repository == 'cashapp/turbine' }}
+        if: ${{ github.ref == 'refs/heads/trunk' && github.repository == 'JakeWharton/platform-collections' }}
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
