@@ -1,0 +1,25 @@
+buildscript {
+	dependencies {
+		classpath libs.kotlin.gradlePlugin
+		classpath libs.dokka.gradlePlugin
+	}
+	repositories {
+		mavenCentral()
+	}
+}
+
+apply plugin: 'org.jetbrains.kotlin.multiplatform'
+apply plugin: 'org.jetbrains.dokka'
+
+kotlin {
+	explicitApi()
+
+	js {
+		nodejs()
+	}
+	jvm()
+}
+
+repositories {
+	mavenCentral()
+}

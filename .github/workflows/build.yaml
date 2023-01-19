@@ -1,0 +1,36 @@
+name: build
+
+on:
+  pull_request: {}
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '**'
+
+env:
+  GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4g -Dorg.gradle.daemon=false -Dkotlin.incremental=false"
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3.9.0
+        with:
+          distribution: 'zulu'
+          java-version: 19
+      - uses: gradle/gradle-build-action@v2
+
+      - run: ./gradlew build
+
+      - name: Deploy docs to website
+        if: ${{ github.ref == 'refs/heads/trunk' && github.repository == 'cashapp/turbine' }}
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: site
+          FOLDER: build/dokka/html
+          TARGET_FOLDER: docs/latest/
+          CLEAN: true
