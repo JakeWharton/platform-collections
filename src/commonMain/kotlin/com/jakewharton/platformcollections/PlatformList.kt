@@ -30,6 +30,7 @@ public expect value class PlatformList<E>
 
 	public inline fun forEach(noinline block: (E) -> Unit)
 
+	public fun asMutableList(): MutableList<E>
 	public fun toMutableList(): MutableList<E>
 
 	@Suppress("OVERRIDE_BY_INLINE")

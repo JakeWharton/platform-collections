@@ -50,6 +50,10 @@ public actual value class PlatformList<E>
 		storage.forEach(block)
 	}
 
+	public actual fun asMutableList(): MutableList<E> {
+		return JsArrayMutableList(storage)
+	}
+
 	public actual fun toMutableList(): MutableList<E> {
 		val arrayList = ArrayList<E>(size())
 		@Suppress("UNUSED_VARIABLE") // Used in JS code block below.

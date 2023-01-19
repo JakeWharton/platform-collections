@@ -52,6 +52,10 @@ public actual value class PlatformList<E>
 		storage.forEach(block)
 	}
 
+	public actual inline fun asMutableList(): MutableList<E> {
+		return storage
+	}
+
 	public actual inline fun toMutableList(): MutableList<E> {
 		return ArrayList(storage)
 	}
