@@ -31,7 +31,7 @@ public actual value class PlatformMap<K, V>
 	}
 
 	public actual inline fun put(key: K, value: V) {
-		storage.setObject(key, value as NSCopyingProtocol)
+		storage.setObject(value, key as NSCopyingProtocol)
 	}
 
 	public actual inline fun remove(key: K) {
