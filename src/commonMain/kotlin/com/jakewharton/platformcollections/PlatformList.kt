@@ -7,6 +7,7 @@ public expect inline fun <E> PlatformList(): PlatformList<E>
 public expect class PlatformList<E> {
 	@Suppress("INLINE_PROPERTY_WITH_BACKING_FIELD")
 	public inline val size: Int
+	public inline fun isEmpty(): Boolean
 
 	public inline operator fun contains(element: E): Boolean
 	public inline operator fun get(index: Int): E
@@ -29,9 +30,6 @@ public expect class PlatformList<E> {
 
 public inline fun <E> PlatformList<E>.toList(): List<E> = toMutableList()
 
-public inline fun <E> PlatformList<E>.isEmpty(): Boolean {
-	return size == 0
-}
 public inline fun <E> PlatformList<E>.isNotEmpty(): Boolean {
-	return size != 0
+	return !isEmpty()
 }

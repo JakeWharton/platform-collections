@@ -14,6 +14,10 @@ public actual value class PlatformList<E>
 ) {
 	public actual inline val size: Int get() = storage.size
 
+	public actual inline fun isEmpty(): Boolean {
+		return storage.isEmpty()
+	}
+
 	public actual inline operator fun contains(element: E): Boolean {
 		return storage.contains(element)
 	}
