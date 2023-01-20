@@ -4,7 +4,6 @@ $dokka.location:com.jakewharton.platformcollections////PointingToDeclaration/pl
 $dokka.location:com.jakewharton.platformcollections//PlatformList/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-list.html
 $dokka.location:com.jakewharton.platformcollections//PlatformMap/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-map.html
 $dokka.location:com.jakewharton.platformcollections//PlatformSet/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-set.html
-$dokka.location:com.jakewharton.platformcollections//isEmpty/com.jakewharton.platformcollections.PlatformList[TypeParam(bounds=[kotlin.Any?])]#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/is-empty.html
 $dokka.location:com.jakewharton.platformcollections//isNotEmpty/com.jakewharton.platformcollections.PlatformList[TypeParam(bounds=[kotlin.Any?])]#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/is-not-empty.html
 $dokka.location:com.jakewharton.platformcollections//toList/com.jakewharton.platformcollections.PlatformList[TypeParam(bounds=[kotlin.Any?])]#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/to-list.html
 $dokka.location:com.jakewharton.platformcollections/PlatformList///PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-list/index.html
@@ -16,6 +15,7 @@ $dokka.location:com.jakewharton.platformcollections/PlatformList/contains/#TypeP
 $dokka.location:com.jakewharton.platformcollections/PlatformList/forEach/#kotlin.Function1[TypeParam(bounds=[kotlin.Any?]),kotlin.Unit]/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-list/for-each.html
 $dokka.location:com.jakewharton.platformcollections/PlatformList/get/#kotlin.Int/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-list/get.html
 $dokka.location:com.jakewharton.platformcollections/PlatformList/indexOf/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-list/index-of.html
+$dokka.location:com.jakewharton.platformcollections/PlatformList/isEmpty/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-list/is-empty.html
 $dokka.location:com.jakewharton.platformcollections/PlatformList/lastIndexOf/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-list/last-index-of.html
 $dokka.location:com.jakewharton.platformcollections/PlatformList/set/#kotlin.Int#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-list/set.html
 $dokka.location:com.jakewharton.platformcollections/PlatformList/size/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-list/size.html
