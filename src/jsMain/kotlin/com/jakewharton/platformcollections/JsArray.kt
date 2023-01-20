@@ -1,5 +1,6 @@
 package com.jakewharton.platformcollections
 
+@JsName("Array")
 @PublishedApi
 internal external class JsArray<E> {
 	var length: Int

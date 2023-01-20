@@ -5,7 +5,7 @@ package com.jakewharton.platformcollections
 internal actual typealias PlatformListStorage<E> = JsArray<E>
 
 public actual inline fun <E> PlatformList(): PlatformList<E> {
-	return PlatformList(js("[]").unsafeCast<JsArray<E>>())
+	return PlatformList(JsArray())
 }
 
 public actual value class PlatformList<E>

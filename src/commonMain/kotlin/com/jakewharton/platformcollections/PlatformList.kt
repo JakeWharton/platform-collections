@@ -6,7 +6,7 @@ import kotlin.jvm.JvmInline
 
 internal expect class PlatformListStorage<E>
 
-public expect fun <E> PlatformList(): PlatformList<E>
+public expect inline fun <E> PlatformList(): PlatformList<E>
 
 @JvmInline
 public expect value class PlatformList<E>
@@ -28,7 +28,7 @@ public expect value class PlatformList<E>
 	public inline operator fun set(index: Int, element: E): E
 	public inline fun clear()
 
-	public inline fun forEach(noinline block: (E) -> Unit)
+	public inline fun forEach(noinline block: (item: E) -> Unit)
 
 	public fun asMutableList(): MutableList<E>
 	public fun toMutableList(): MutableList<E>
