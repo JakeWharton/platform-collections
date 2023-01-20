@@ -16,7 +16,7 @@ public expect class PlatformList<E> {
 
 	public inline fun add(element: E)
 	public inline fun add(index: Int, element: E)
-	public inline operator fun set(index: Int, element: E): E
+	public inline operator fun set(index: Int, element: E)
 	public inline fun clear()
 
 	public inline fun forEach(noinline block: (item: E) -> Unit)

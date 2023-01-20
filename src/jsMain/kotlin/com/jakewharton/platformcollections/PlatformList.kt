@@ -41,8 +41,8 @@ public actual value class PlatformList<E>
 		storage.splice(index, 0, element)
 	}
 
-	public actual inline operator fun set(index: Int, element: E): E {
-		return storage.splice(index, 1, element)[0]
+	public actual inline operator fun set(index: Int, element: E) {
+		storage.splice(index, 1, element)
 	}
 
 	public actual inline fun clear() {

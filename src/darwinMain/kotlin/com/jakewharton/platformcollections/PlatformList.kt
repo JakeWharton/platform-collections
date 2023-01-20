@@ -65,9 +65,8 @@ public actual value class PlatformList<E>
 
 	@Suppress("UnnecessaryOptInAnnotation") // Nope! It's needed.
 	@OptIn(UnsafeNumber::class)
-	public actual inline operator fun set(index: Int, element: E): E {
+	public actual inline operator fun set(index: Int, element: E) {
 		storage.replaceObjectAtIndex(index.convert(), element)
-		TODO() // TODO we should probably remove the return value here.
 	}
 
 	public actual inline fun clear() {
