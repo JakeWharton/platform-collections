@@ -2,21 +2,17 @@
 
 package com.jakewharton.platformcollections
 
-@Suppress("ACTUAL_WITHOUT_EXPECT") // https://youtrack.jetbrains.com/issue/KT-37316
-internal actual typealias PlatformMapStorage<K, V> = java.util.LinkedHashMap<K, V>
-
 public actual inline fun <K, V> PlatformMap(): PlatformMap<K, V> {
 	return PlatformMap(LinkedHashMap())
 }
 
 @JvmInline
+@Suppress("ACTUAL_WITHOUT_EXPECT")
 public actual value class PlatformMap<K, V>
 @PublishedApi internal constructor(
-	@PublishedApi internal val storage: PlatformMapStorage<K, V>,
+	@PublishedApi internal val storage: LinkedHashMap<K, V>,
 ) {
-	public actual inline fun size(): Int {
-		return storage.size
-	}
+	public actual inline val size: Int get() = storage.size
 
 	public actual inline operator fun contains(key: K): Boolean {
 		return storage.containsKey(key)

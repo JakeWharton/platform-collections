@@ -2,19 +2,16 @@
 
 package com.jakewharton.platformcollections
 
-internal actual typealias PlatformMapStorage<K, V> = JsMap<K, V>
-
 public actual inline fun <K, V> PlatformMap(): PlatformMap<K, V> {
 	return PlatformMap(JsMap())
 }
 
+@Suppress("ACTUAL_WITHOUT_EXPECT")
 public actual value class PlatformMap<K, V>
 @PublishedApi internal constructor(
 	@PublishedApi internal val storage: JsMap<K, V>,
 ) {
-	public actual inline fun size(): Int {
-		return storage.size
-	}
+	public actual inline val size: Int get() = storage.size
 
 	public actual inline operator fun contains(key: K): Boolean {
 		return storage.has(key)

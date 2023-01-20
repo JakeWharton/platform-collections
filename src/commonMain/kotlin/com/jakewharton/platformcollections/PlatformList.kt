@@ -2,21 +2,11 @@
 
 package com.jakewharton.platformcollections
 
-import kotlin.jvm.JvmInline
-
-internal expect class PlatformListStorage<E>
-
 public expect inline fun <E> PlatformList(): PlatformList<E>
 
-@JvmInline
-public expect value class PlatformList<E>
-// TODO This constructor should not need to be defined in the expect.
-//  It causes the need to expose PlatformListStorage here, too.
-@PublishedApi internal constructor(
-	@PublishedApi internal val storage: PlatformListStorage<E>,
-){
-	// TODO Should be a `val` but Kotlin complains.
-	public inline fun size(): Int
+public expect class PlatformList<E> {
+	@Suppress("INLINE_PROPERTY_WITH_BACKING_FIELD")
+	public inline val size: Int
 
 	public inline operator fun contains(element: E): Boolean
 	public inline operator fun get(index: Int): E
@@ -40,8 +30,8 @@ public expect value class PlatformList<E>
 public inline fun <E> PlatformList<E>.toList(): List<E> = toMutableList()
 
 public inline fun <E> PlatformList<E>.isEmpty(): Boolean {
-	return size() == 0
+	return size == 0
 }
 public inline fun <E> PlatformList<E>.isNotEmpty(): Boolean {
-	return size() != 0
+	return size != 0
 }

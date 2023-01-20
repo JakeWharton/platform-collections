@@ -2,21 +2,17 @@
 
 package com.jakewharton.platformcollections
 
-@Suppress("ACTUAL_WITHOUT_EXPECT") // https://youtrack.jetbrains.com/issue/KT-37316
-internal actual typealias PlatformSetStorage<E> = java.util.LinkedHashSet<E>
-
 public actual inline fun <E> PlatformSet(): PlatformSet<E> {
 	return PlatformSet(LinkedHashSet())
 }
 
 @JvmInline
+@Suppress("ACTUAL_WITHOUT_EXPECT")
 public actual value class PlatformSet<E>
 @PublishedApi internal constructor(
-	@PublishedApi internal val storage: PlatformSetStorage<E>,
+	@PublishedApi internal val storage: LinkedHashSet<E>,
 ) {
-	public actual inline fun size(): Int {
-		return storage.size
-	}
+	public actual inline val size: Int get() = storage.size
 
 	public actual inline operator fun contains(item: E): Boolean {
 		return storage.contains(item)

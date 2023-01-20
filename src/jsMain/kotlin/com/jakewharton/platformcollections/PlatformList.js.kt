@@ -2,17 +2,16 @@
 
 package com.jakewharton.platformcollections
 
-internal actual typealias PlatformListStorage<E> = JsArray<E>
-
 public actual inline fun <E> PlatformList(): PlatformList<E> {
 	return PlatformList(JsArray())
 }
 
+@Suppress("ACTUAL_WITHOUT_EXPECT")
 public actual value class PlatformList<E>
 @PublishedApi internal constructor(
 	@PublishedApi internal val storage: JsArray<E>,
 ) {
-	public actual inline fun size(): Int = storage.length
+	public actual inline val size: Int get() = storage.length
 
 	public actual inline operator fun contains(element: E): Boolean {
 		return storage.includes(element)
@@ -55,7 +54,7 @@ public actual value class PlatformList<E>
 	}
 
 	public actual fun toMutableList(): MutableList<E> {
-		val arrayList = ArrayList<E>(size())
+		val arrayList = ArrayList<E>(size)
 		@Suppress("UNUSED_VARIABLE") // Used in JS code block below.
 		val storage = storage
 		// Kotlin loops generate verbose JS in the form:

@@ -2,19 +2,17 @@
 
 package com.jakewharton.platformcollections
 
-@Suppress("ACTUAL_WITHOUT_EXPECT") // https://youtrack.jetbrains.com/issue/KT-37316
-internal actual typealias PlatformListStorage<E> = java.util.ArrayList<E>
-
 public actual inline fun <E> PlatformList(): PlatformList<E> {
 	return PlatformList(ArrayList())
 }
 
 @JvmInline
+@Suppress("ACTUAL_WITHOUT_EXPECT")
 public actual value class PlatformList<E>
 @PublishedApi internal constructor(
 	@PublishedApi internal val storage: ArrayList<E>,
 ) {
-	public actual inline fun size(): Int = storage.size
+	public actual inline val size: Int get() = storage.size
 
 	public actual inline operator fun contains(element: E): Boolean {
 		return storage.contains(element)
