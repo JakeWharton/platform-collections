@@ -44,6 +44,7 @@ public actual value class PlatformSet<E>
 
 	@Suppress("OVERRIDE_BY_INLINE")
 	actual override inline fun toString(): String {
-		return storage.toString()
+		@Suppress("UNNECESSARY_NOT_NULL_ASSERTION") // See PlatformList.toString
+		return storage.toString()!!
 	}
 }
