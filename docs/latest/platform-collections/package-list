@@ -5,6 +5,8 @@ $dokka.location:com.jakewharton.platformcollections//PlatformList/#/PointingToDe
 $dokka.location:com.jakewharton.platformcollections//PlatformMap/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-map.html
 $dokka.location:com.jakewharton.platformcollections//PlatformSet/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-set.html
 $dokka.location:com.jakewharton.platformcollections//isNotEmpty/com.jakewharton.platformcollections.PlatformList[TypeParam(bounds=[kotlin.Any?])]#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/is-not-empty.html
+$dokka.location:com.jakewharton.platformcollections//isNotEmpty/com.jakewharton.platformcollections.PlatformMap[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/is-not-empty.html
+$dokka.location:com.jakewharton.platformcollections//isNotEmpty/com.jakewharton.platformcollections.PlatformSet[TypeParam(bounds=[kotlin.Any?])]#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/is-not-empty.html
 $dokka.location:com.jakewharton.platformcollections//toList/com.jakewharton.platformcollections.PlatformList[TypeParam(bounds=[kotlin.Any?])]#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/to-list.html
 $dokka.location:com.jakewharton.platformcollections/PlatformList///PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-list/index.html
 $dokka.location:com.jakewharton.platformcollections/PlatformList/add/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-list/add.html
@@ -27,6 +29,7 @@ $dokka.location:com.jakewharton.platformcollections/PlatformMap/clear/#/Pointing
 $dokka.location:com.jakewharton.platformcollections/PlatformMap/contains/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-map/contains.html
 $dokka.location:com.jakewharton.platformcollections/PlatformMap/forEach/#kotlin.Function2[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?]),kotlin.Unit]/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-map/for-each.html
 $dokka.location:com.jakewharton.platformcollections/PlatformMap/get/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-map/get.html
+$dokka.location:com.jakewharton.platformcollections/PlatformMap/isEmpty/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-map/is-empty.html
 $dokka.location:com.jakewharton.platformcollections/PlatformMap/put/#TypeParam(bounds=[kotlin.Any?])#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-map/put.html
 $dokka.location:com.jakewharton.platformcollections/PlatformMap/remove/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-map/remove.html
 $dokka.location:com.jakewharton.platformcollections/PlatformMap/size/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-map/size.html
@@ -38,6 +41,7 @@ $dokka.location:com.jakewharton.platformcollections/PlatformSet/asMutableSet/#/P
 $dokka.location:com.jakewharton.platformcollections/PlatformSet/clear/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-set/clear.html
 $dokka.location:com.jakewharton.platformcollections/PlatformSet/contains/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-set/contains.html
 $dokka.location:com.jakewharton.platformcollections/PlatformSet/forEach/#kotlin.Function1[TypeParam(bounds=[kotlin.Any?]),kotlin.Unit]/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-set/for-each.html
+$dokka.location:com.jakewharton.platformcollections/PlatformSet/isEmpty/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-set/is-empty.html
 $dokka.location:com.jakewharton.platformcollections/PlatformSet/remove/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-set/remove.html
 $dokka.location:com.jakewharton.platformcollections/PlatformSet/size/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-set/size.html
 $dokka.location:com.jakewharton.platformcollections/PlatformSet/toMutableSet/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-set/to-mutable-set.html
