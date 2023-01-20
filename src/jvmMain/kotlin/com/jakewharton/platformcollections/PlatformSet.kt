@@ -14,6 +14,10 @@ public actual value class PlatformSet<E>
 ) {
 	public actual inline val size: Int get() = storage.size
 
+	public actual inline fun isEmpty(): Boolean {
+		return storage.isEmpty()
+	}
+
 	public actual inline operator fun contains(item: E): Boolean {
 		return storage.contains(item)
 	}

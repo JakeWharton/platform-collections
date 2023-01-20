@@ -13,6 +13,10 @@ public actual value class PlatformMap<K, V>
 ) {
 	public actual inline val size: Int get() = storage.size
 
+	public actual inline fun isEmpty(): Boolean {
+		return storage.isEmpty()
+	}
+
 	public actual inline operator fun contains(key: K): Boolean {
 		return storage.containsKey(key)
 	}

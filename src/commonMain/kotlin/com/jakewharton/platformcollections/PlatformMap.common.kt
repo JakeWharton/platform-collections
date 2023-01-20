@@ -5,6 +5,7 @@ public expect inline fun <K, V> PlatformMap(): PlatformMap<K, V>
 public expect class PlatformMap<K, V> {
 	@Suppress("INLINE_PROPERTY_WITH_BACKING_FIELD")
 	public inline val size: Int
+	public inline fun isEmpty(): Boolean
 
 	public inline operator fun contains(key: K): Boolean
 	public inline operator fun get(key: K): V?
@@ -20,4 +21,8 @@ public expect class PlatformMap<K, V> {
 
 	@Suppress("OVERRIDE_BY_INLINE")
 	public override inline fun toString(): String
+}
+
+public inline fun <K, V> PlatformMap<K, V>.isNotEmpty(): Boolean {
+	return !isEmpty()
 }

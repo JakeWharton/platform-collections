@@ -5,6 +5,7 @@ public expect inline fun <E> PlatformSet(): PlatformSet<E>
 public expect class PlatformSet<E> {
 	@Suppress("INLINE_PROPERTY_WITH_BACKING_FIELD")
 	public inline val size: Int
+	public inline fun isEmpty(): Boolean
 
 	public inline operator fun contains(item: E): Boolean
 
@@ -19,4 +20,8 @@ public expect class PlatformSet<E> {
 
 	@Suppress("OVERRIDE_BY_INLINE")
 	public override inline fun toString(): String
+}
+
+public inline fun <E> PlatformSet<E>.isNotEmpty(): Boolean {
+	return !isEmpty()
 }

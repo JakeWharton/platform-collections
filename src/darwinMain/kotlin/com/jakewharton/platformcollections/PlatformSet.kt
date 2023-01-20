@@ -20,6 +20,11 @@ public actual value class PlatformSet<E>
 	@OptIn(UnsafeNumber::class)
 	public actual inline val size: Int get() = storage.count.toInt()
 
+	@OptIn(UnsafeNumber::class)
+	public actual inline fun isEmpty(): Boolean {
+		return storage.count.toInt() == 0
+	}
+
 	public actual inline operator fun contains(item: E): Boolean {
 		return storage.containsObject(item)
 	}

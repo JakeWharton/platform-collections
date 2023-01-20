@@ -21,6 +21,11 @@ public actual value class PlatformMap<K, V>
 	@OptIn(UnsafeNumber::class)
 	public actual inline val size: Int get() = storage.count.toInt()
 
+	@OptIn(UnsafeNumber::class)
+	public actual inline fun isEmpty(): Boolean {
+		return storage.count.toInt() == 0
+	}
+
 	public actual inline operator fun contains(key: K): Boolean {
 		return storage.objectForKey(key) != nil
 	}
