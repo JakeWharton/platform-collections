@@ -16,13 +16,25 @@ apply plugin: 'org.jetbrains.dokka'
 kotlin {
 	explicitApi()
 
+	androidNativeArm32()
+	androidNativeArm64()
+	androidNativeX64()
+	androidNativeX86()
+
 	iosArm32()
 	iosArm64()
 	iosSimulatorArm64()
 	iosX64()
 
+	linuxArm32Hfp()
+	linuxArm64()
+	linuxX64()
+
 	macosArm64()
 	macosX64()
+
+	mingwX64()
+	mingwX86()
 
 	js {
 		nodejs()
@@ -34,6 +46,8 @@ kotlin {
 	tvosSimulatorArm64()
 	tvosX64()
 
+	wasm32()
+
 	watchosArm32()
 	watchosArm64()
 	watchosDeviceArm64()
@@ -42,12 +56,19 @@ kotlin {
 	watchosX86()
 
 	sourceSets {
+		// Implementations using regular kotlinx.collection types.
+		collectionsMain {}
+		// Implementations using Foundation.
 		darwinMain {}
 	}
 
 	targets.configureEach { target ->
 		if (target.platformType == KotlinPlatformType.native) {
-			target.compilations.main.source(sourceSets.darwinMain)
+			if (target.name.contains('os')) {
+				target.compilations.main.source(sourceSets.darwinMain)
+			} else {
+				target.compilations.main.source(sourceSets.collectionsMain)
+			}
 		}
 	}
 }
