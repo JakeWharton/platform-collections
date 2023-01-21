@@ -1,58 +1,39 @@
-@file:Suppress("NOTHING_TO_INLINE")
+@file:Suppress("EXTENSION_SHADOWED_BY_MEMBER")
 
 package com.jakewharton.platformcollections
 
-public actual inline fun <K, V> PlatformMap(): PlatformMap<K, V> {
-	return PlatformMap(LinkedHashMap())
+public actual typealias PlatformMap<K, V> = HashMap<K, V>
+
+public actual inline fun <K, V> PlatformMap<K, V>.asMutableMap(): MutableMap<K, V> {
+	return this
 }
 
-@Suppress("ACTUAL_WITHOUT_EXPECT")
-public actual value class PlatformMap<K, V>
-@PublishedApi internal constructor(
-	@PublishedApi internal val storage: LinkedHashMap<K, V>,
-) {
-	public actual inline val size: Int get() = storage.size
+public actual inline fun <K, V> PlatformMap<K, V>.clear() {
+	clear()
+}
 
-	public actual inline fun isEmpty(): Boolean {
-		return storage.isEmpty()
-	}
+public actual inline operator fun <K, V> PlatformMap<K, V>.contains(key: K): Boolean {
+	return containsKey(key)
+}
 
-	public actual inline operator fun contains(key: K): Boolean {
-		return storage.containsKey(key)
-	}
+public actual inline fun <K, V> PlatformMap<K, V>.isEmpty(): Boolean {
+	return isEmpty()
+}
 
-	public actual inline operator fun get(key: K): V? {
-		return storage[key]
-	}
+public actual inline operator fun <K, V> PlatformMap<K, V>.get(key: K): V? {
+	return this[key]
+}
 
-	public actual inline fun put(key: K, value: V) {
-		storage[key] = value
-	}
+public actual inline fun <K, V> PlatformMap<K, V>.put(key: K, value: V) {
+	this[key] = value
+}
 
-	public actual inline fun remove(key: K) {
-		storage.remove(key)
-	}
+public actual inline fun <K, V> PlatformMap<K, V>.remove(key: K) {
+	remove(key)
+}
 
-	public actual inline fun clear() {
-		storage.clear()
-	}
+public actual inline val <K, V> PlatformMap<K, V>.size: Int get() = size
 
-	public actual inline fun forEach(crossinline block: (key: K, value: V) -> Unit) {
-		storage.forEach { (key, value) ->
-			block(key, value)
-		}
-	}
-
-	public actual inline fun asMutableMap(): MutableMap<K, V> {
-		return storage
-	}
-
-	public actual inline fun toMutableMap(): MutableMap<K, V> {
-		return LinkedHashMap(storage)
-	}
-
-	@Suppress("OVERRIDE_BY_INLINE")
-	actual override inline fun toString(): String {
-		return storage.toString()
-	}
+public actual inline fun <K, V> PlatformMap<K, V>.toMutableMap(): MutableMap<K, V> {
+	return LinkedHashMap(this)
 }

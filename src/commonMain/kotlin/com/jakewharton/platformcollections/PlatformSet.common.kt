@@ -6,7 +6,8 @@
 
 package com.jakewharton.platformcollections
 
-public expect class PlatformSet<@Suppress("unused") E>
+@Suppress("unused") // Type parameter on actual and extensions.
+public expect class PlatformSet<E>
 public constructor()
 
 public expect fun <E> PlatformSet<E>.add(item: E)
