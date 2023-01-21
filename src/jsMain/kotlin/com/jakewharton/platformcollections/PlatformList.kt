@@ -25,7 +25,8 @@ public actual inline operator fun <E> PlatformList<E>.contains(item: E): Boolean
 }
 
 public actual inline operator fun <E> PlatformList<E>.get(index: Int): E {
-	return asDynamic()[index].unsafeCast<E>()
+	@Suppress("UnsafeCastFromDynamic") // Avoids yet another set of temporary vars.
+	return asDynamic()[index]
 }
 
 public actual inline fun <E> PlatformList<E>.indexOf(item: E): Int {
