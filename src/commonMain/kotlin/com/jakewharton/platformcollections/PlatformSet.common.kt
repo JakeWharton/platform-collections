@@ -1,27 +1,48 @@
+@file:Suppress(
+	"NOTHING_TO_INLINE",
+	"EXTENSION_SHADOWED_BY_MEMBER", // Mirroring MutableSet API closely.
+	"KotlinRedundantDiagnosticSuppress", // Shadow only occurs on some targets.
+)
+
 package com.jakewharton.platformcollections
 
-public expect inline fun <E> PlatformSet(): PlatformSet<E>
+public expect class PlatformSet<@Suppress("unused") E>
+public constructor()
 
-public expect class PlatformSet<E> {
-	@Suppress("INLINE_PROPERTY_WITH_BACKING_FIELD")
-	public inline val size: Int
-	public inline fun isEmpty(): Boolean
+public expect fun <E> PlatformSet<E>.add(item: E)
 
-	public inline operator fun contains(item: E): Boolean
+public expect fun <E> PlatformSet<E>.asMutableSet(): MutableSet<E>
 
-	public inline fun add(item: E)
-	public inline fun remove(item: E)
-	public inline fun clear()
-
-	public inline fun forEach(noinline block: (item: E) -> Unit)
-
-	public fun asMutableSet(): MutableSet<E>
-	public fun toMutableSet(): MutableSet<E>
-
-	@Suppress("OVERRIDE_BY_INLINE")
-	public override inline fun toString(): String
+public inline fun <E> PlatformSet<E>.asSet(): Set<E> {
+	// TODO file a bug?
+	@Suppress(
+		"USELESS_CAST", // Some platforms don't see this as polymorphic.
+		"UNCHECKED_CAST",
+	)
+	return asMutableSet() as Set<E>
 }
+
+public expect fun <E> PlatformSet<E>.clear()
+
+public expect operator fun <E> PlatformSet<E>.contains(item: E): Boolean
+
+public expect fun <E> PlatformSet<E>.isEmpty(): Boolean
 
 public inline fun <E> PlatformSet<E>.isNotEmpty(): Boolean {
 	return !isEmpty()
+}
+
+public expect fun <E> PlatformSet<E>.remove(item: E)
+
+public expect val <E> PlatformSet<E>.size: Int
+
+public expect fun <E> PlatformSet<E>.toMutableSet(): MutableSet<E>
+
+public inline fun <E> PlatformSet<E>.toSet(): Set<E> {
+	// TODO file a bug?
+	@Suppress(
+		"USELESS_CAST", // Some platforms don't see this as polymorphic.
+		"UNCHECKED_CAST",
+	)
+	return toMutableSet() as Set<E>
 }

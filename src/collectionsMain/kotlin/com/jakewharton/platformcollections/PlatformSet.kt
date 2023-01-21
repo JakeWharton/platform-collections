@@ -1,52 +1,35 @@
-@file:Suppress("NOTHING_TO_INLINE")
+@file:Suppress("EXTENSION_SHADOWED_BY_MEMBER")
 
 package com.jakewharton.platformcollections
 
-public actual inline fun <E> PlatformSet(): PlatformSet<E> {
-	return PlatformSet(LinkedHashSet())
+public actual typealias PlatformSet<E> = HashSet<E>
+
+public actual inline fun <E> PlatformSet<E>.add(item: E) {
+	add(item)
 }
 
-@Suppress("ACTUAL_WITHOUT_EXPECT")
-public actual value class PlatformSet<E>
-@PublishedApi internal constructor(
-	@PublishedApi internal val storage: LinkedHashSet<E>,
-) {
-	public actual inline val size: Int get() = storage.size
+public actual inline fun <E> PlatformSet<E>.asMutableSet(): MutableSet<E> {
+	return this
+}
 
-	public actual inline fun isEmpty(): Boolean {
-		return storage.isEmpty()
-	}
+public actual inline fun <E> PlatformSet<E>.clear() {
+	clear()
+}
 
-	public actual inline operator fun contains(item: E): Boolean {
-		return storage.contains(item)
-	}
+public actual inline operator fun <E> PlatformSet<E>.contains(item: E): Boolean {
+	return contains(item)
+}
 
-	public actual inline fun add(item: E) {
-		storage.add(item)
-	}
+public actual inline fun <E> PlatformSet<E>.isEmpty(): Boolean {
+	return isEmpty()
+}
 
-	public actual inline fun remove(item: E) {
-		storage.remove(item)
-	}
+public actual inline fun <E> PlatformSet<E>.remove(item: E) {
+	remove(item)
+}
 
-	public actual inline fun clear() {
-		storage.clear()
-	}
+public actual inline val <E> PlatformSet<E>.size: Int get() = size
 
-	public actual inline fun forEach(noinline block: (item: E) -> Unit) {
-		storage.forEach(block)
-	}
-
-	public actual inline fun asMutableSet(): MutableSet<E> {
-		return storage
-	}
-
-	public actual inline fun toMutableSet(): MutableSet<E> {
-		return LinkedHashSet(storage)
-	}
-
-	@Suppress("OVERRIDE_BY_INLINE")
-	actual override inline fun toString(): String {
-		return storage.toString()
-	}
+public actual inline fun <E> PlatformSet<E>.toMutableSet(): MutableSet<E> {
+	return LinkedHashSet(this)
 }

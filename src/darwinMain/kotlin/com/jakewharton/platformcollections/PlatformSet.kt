@@ -1,63 +1,52 @@
-@file:Suppress("NOTHING_TO_INLINE")
+@file:OptIn(UnsafeNumber::class)
 
 package com.jakewharton.platformcollections
 
 import kotlinx.cinterop.UnsafeNumber
+import platform.Foundation.NSMutableArray
 import platform.Foundation.NSMutableSet
 import platform.Foundation.containsObject
 import platform.Foundation.enumerateObjectsUsingBlock
 import platform.Foundation.removeAllObjects
 
-public actual inline fun <E> PlatformSet(): PlatformSet<E> {
-	return PlatformSet(NSMutableSet())
+@Suppress("ACTUAL_WITHOUT_EXPECT") // Our use of 'value' fails the matcher.
+public actual typealias PlatformSet<E> = MutableSet<E>
+
+public value class MutableSet<@Suppress("unused") E>
+private constructor(
+	public val storage: NSMutableSet,
+) {
+	public constructor() : this(NSMutableSet())
 }
 
-@Suppress("ACTUAL_WITHOUT_EXPECT")
-public actual value class PlatformSet<E>
-@PublishedApi internal constructor(
-	@PublishedApi internal val storage: NSMutableSet,
-) {
-	@OptIn(UnsafeNumber::class)
-	public actual inline val size: Int get() = storage.count.toInt()
+public actual inline fun <E> PlatformSet<E>.add(item: E) {
+	storage.addObject(item)
+}
 
-	@OptIn(UnsafeNumber::class)
-	public actual inline fun isEmpty(): Boolean {
-		return storage.count.toInt() == 0
-	}
+public actual inline fun <E> PlatformSet<E>.asMutableSet(): MutableSet<E> {
+	TODO()
+}
 
-	public actual inline operator fun contains(item: E): Boolean {
-		return storage.containsObject(item)
-	}
+public actual inline fun <E> PlatformSet<E>.clear() {
+	storage.removeAllObjects()
+}
 
-	public actual inline fun add(item: E) {
-		storage.addObject(item)
-	}
+public actual inline operator fun <E> PlatformSet<E>.contains(item: E): Boolean {
+	return storage.containsObject(item)
+}
 
-	public actual inline fun remove(item: E) {
-		storage.removeObject(item)
-	}
+@OptIn(UnsafeNumber::class)
+public actual inline fun <E> PlatformSet<E>.isEmpty(): Boolean {
+	return storage.count.toInt() == 0
+}
 
-	public actual inline fun clear() {
-		storage.removeAllObjects()
-	}
+public actual inline fun <E> PlatformSet<E>.remove(item: E) {
+	storage.removeObject(item)
+}
 
-	public actual inline fun forEach(crossinline block: (item: E) -> Unit) {
-		storage.enumerateObjectsUsingBlock { element, _ ->
-			@Suppress("UNCHECKED_CAST")
-			block(element as E)
-		}
-	}
+@OptIn(UnsafeNumber::class)
+public actual inline val <E> PlatformSet<E>.size: Int get() = storage.count.toInt()
 
-	public actual inline fun asMutableSet(): MutableSet<E> {
-		TODO()
-	}
-
-	public actual inline fun toMutableSet(): MutableSet<E> {
-		TODO()
-	}
-
-	@Suppress("OVERRIDE_BY_INLINE")
-	actual override inline fun toString(): String {
-		TODO()
-	}
+public actual inline fun <E> PlatformSet<E>.toMutableSet(): MutableSet<E> {
+	TODO()
 }
