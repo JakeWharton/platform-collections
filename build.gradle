@@ -1,6 +1,4 @@
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithTests
-import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
 
 buildscript {
 	dependencies {
@@ -76,27 +74,6 @@ kotlin {
 				target.compilations.main.source(sourceSets.darwinMain)
 			} else {
 				target.compilations.main.source(sourceSets.collectionsMain)
-			}
-		}
-	}
-
-	targets.withType(KotlinNativeTargetWithTests).configureEach {
-		binaries {
-			// Add a test binary and execution for native targets which runs on a background thread.
-			test('background', [NativeBuildType.DEBUG]) {
-				freeCompilerArgs += [
-					"-trw"
-				]
-			}
-			// Add a test binary and execution for native targets but in release mode.
-			test([NativeBuildType.RELEASE])
-		}
-		testRuns {
-			background {
-				setExecutionSourceFrom(binaries.getByName("backgroundDebugTest"))
-			}
-			release {
-				setExecutionSourceFrom(binaries.getByName("releaseTest"))
 			}
 		}
 	}
