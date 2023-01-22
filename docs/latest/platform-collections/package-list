@@ -70,9 +70,12 @@ $dokka.location:com.jakewharton.platformcollections/JsSet/size/#/PointingToDecla
 $dokka.location:com.jakewharton.platformcollections/JsSet/toString/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-js-set/to-string.html
 $dokka.location:com.jakewharton.platformcollections/PlatformList///PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-list/index.html
 $dokka.location:com.jakewharton.platformcollections/PlatformList/PlatformList/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-list/-platform-list.html
+$dokka.location:com.jakewharton.platformcollections/PlatformList/storage/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-list/storage.html
 $dokka.location:com.jakewharton.platformcollections/PlatformMap///PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-map/index.html
 $dokka.location:com.jakewharton.platformcollections/PlatformMap/PlatformMap/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-map/-platform-map.html
+$dokka.location:com.jakewharton.platformcollections/PlatformMap/storage/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-map/storage.html
 $dokka.location:com.jakewharton.platformcollections/PlatformSet///PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-set/index.html
 $dokka.location:com.jakewharton.platformcollections/PlatformSet/PlatformSet/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-set/-platform-set.html
+$dokka.location:com.jakewharton.platformcollections/PlatformSet/storage/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-set/storage.html
 com.jakewharton.platformcollections
 
