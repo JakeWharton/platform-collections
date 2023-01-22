@@ -68,15 +68,6 @@ $dokka.location:com.jakewharton.platformcollections/JsSet/forEach/#kotlin.Functi
 $dokka.location:com.jakewharton.platformcollections/JsSet/has/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-js-set/has.html
 $dokka.location:com.jakewharton.platformcollections/JsSet/size/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-js-set/size.html
 $dokka.location:com.jakewharton.platformcollections/JsSet/toString/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-js-set/to-string.html
-$dokka.location:com.jakewharton.platformcollections/MutableArray///PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-mutable-array/index.html
-$dokka.location:com.jakewharton.platformcollections/MutableArray/MutableArray/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-mutable-array/-mutable-array.html
-$dokka.location:com.jakewharton.platformcollections/MutableArray/storage/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-mutable-array/storage.html
-$dokka.location:com.jakewharton.platformcollections/MutableMap///PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-mutable-map/index.html
-$dokka.location:com.jakewharton.platformcollections/MutableMap/MutableMap/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-mutable-map/-mutable-map.html
-$dokka.location:com.jakewharton.platformcollections/MutableMap/storage/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-mutable-map/storage.html
-$dokka.location:com.jakewharton.platformcollections/MutableSet///PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-mutable-set/index.html
-$dokka.location:com.jakewharton.platformcollections/MutableSet/MutableSet/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-mutable-set/-mutable-set.html
-$dokka.location:com.jakewharton.platformcollections/MutableSet/storage/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-mutable-set/storage.html
 $dokka.location:com.jakewharton.platformcollections/PlatformList///PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-list/index.html
 $dokka.location:com.jakewharton.platformcollections/PlatformList/PlatformList/#/PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-list/-platform-list.html
 $dokka.location:com.jakewharton.platformcollections/PlatformMap///PointingToDeclaration/platform-collections/com.jakewharton.platformcollections/-platform-map/index.html
