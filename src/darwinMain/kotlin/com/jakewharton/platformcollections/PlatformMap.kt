@@ -21,8 +21,8 @@ private constructor(
 	public actual constructor() : this(NSMutableDictionary())
 }
 
-public actual inline fun <K, V> PlatformMap<K, V>.asMutableMap(): MutableMap<K, V> {
-	TODO()
+public actual fun <K, V> PlatformMap<K, V>.asMutableMap(): MutableMap<K, V> {
+	return PlatformMapMutableMap(this)
 }
 
 public actual inline fun <K, V> PlatformMap<K, V>.clear() {

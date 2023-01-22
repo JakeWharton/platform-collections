@@ -32,7 +32,7 @@ public actual inline fun <E> PlatformList<E>.add(index: Int, item: E) {
 }
 
 public actual fun <E> PlatformList<E>.asMutableList(): MutableList<E> {
-	TODO()
+	return PlatformListMutableList(this)
 }
 
 public actual inline fun <E> PlatformList<E>.clear() {

@@ -24,8 +24,8 @@ public actual inline fun <E> PlatformSet<E>.add(item: E) {
 	storage.addObject(item)
 }
 
-public actual inline fun <E> PlatformSet<E>.asMutableSet(): MutableSet<E> {
-	TODO()
+public actual fun <E> PlatformSet<E>.asMutableSet(): MutableSet<E> {
+	return PlatformSetMutableSet(this)
 }
 
 public actual inline fun <E> PlatformSet<E>.clear() {
