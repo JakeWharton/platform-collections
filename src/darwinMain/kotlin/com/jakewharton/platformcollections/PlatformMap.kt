@@ -33,14 +33,14 @@ public actual inline operator fun <K, V> PlatformMap<K, V>.contains(key: K): Boo
 	return storage.objectForKey(key) != nil
 }
 
-@OptIn(UnsafeNumber::class)
-public actual inline fun <K, V> PlatformMap<K, V>.isEmpty(): Boolean {
-	return storage.count.toInt() == 0
-}
-
 public actual inline operator fun <K, V> PlatformMap<K, V>.get(key: K): V? {
 	@Suppress("UNCHECKED_CAST")
 	return storage.objectForKey(key) as V?
+}
+
+@OptIn(UnsafeNumber::class)
+public actual inline fun <K, V> PlatformMap<K, V>.isEmpty(): Boolean {
+	return storage.count.toInt() == 0
 }
 
 public actual inline fun <K, V> PlatformMap<K, V>.put(key: K, value: V) {

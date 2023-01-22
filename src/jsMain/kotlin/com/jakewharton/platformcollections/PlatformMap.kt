@@ -16,12 +16,12 @@ public actual inline operator fun <K, V> PlatformMap<K, V>.contains(key: K): Boo
 	return has(key)
 }
 
-public actual inline fun <K, V> PlatformMap<K, V>.isEmpty(): Boolean {
-	return size == 0
-}
-
 public actual inline operator fun <K, V> PlatformMap<K, V>.get(key: K): V? {
 	return get(key)
+}
+
+public actual inline fun <K, V> PlatformMap<K, V>.isEmpty(): Boolean {
+	return size == 0
 }
 
 public actual inline fun <K, V> PlatformMap<K, V>.put(key: K, value: V) {

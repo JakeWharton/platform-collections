@@ -25,13 +25,13 @@ public expect fun <K, V> PlatformMap<K, V>.clear()
 
 public expect operator fun <K, V> PlatformMap<K, V>.contains(key: K): Boolean
 
+public expect operator fun <K, V> PlatformMap<K, V>.get(key: K): V?
+
 public expect fun <K, V> PlatformMap<K, V>.isEmpty(): Boolean
 
 public inline fun <K, V> PlatformMap<K, V>.isNotEmpty(): Boolean {
 	return !isEmpty()
 }
-
-public expect operator fun <K, V> PlatformMap<K, V>.get(key: K): V?
 
 public expect fun <K, V> PlatformMap<K, V>.put(key: K, value: V)
 
