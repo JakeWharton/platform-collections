@@ -1,4 +1,4 @@
-@file:Suppress("NOTHING_TO_INLINE")
+@file:OptIn(UnsafeNumber::class)
 
 package com.jakewharton.platformcollections
 
@@ -38,7 +38,6 @@ public actual inline operator fun <K, V> PlatformMap<K, V>.get(key: K): V? {
 	return storage.objectForKey(key) as V?
 }
 
-@OptIn(UnsafeNumber::class)
 public actual inline fun <K, V> PlatformMap<K, V>.isEmpty(): Boolean {
 	return storage.count.toInt() == 0
 }
@@ -51,7 +50,6 @@ public actual inline fun <K, V> PlatformMap<K, V>.remove(key: K) {
 	storage.removeObjectForKey(key)
 }
 
-@OptIn(UnsafeNumber::class)
 public actual inline val <K, V> PlatformMap<K, V>.size: Int get() = storage.count.toInt()
 
 public actual inline fun <K, V> PlatformMap<K, V>.toMutableMap(): MutableMap<K, V> {

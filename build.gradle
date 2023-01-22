@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 buildscript {
 	dependencies {
@@ -91,6 +92,12 @@ kotlin {
 				target.compilations.main.source(sourceSets.unspecializedMain)
 			}
 		}
+	}
+}
+
+tasks.withType(KotlinCompilationTask).configureEach {
+	compilerOptions {
+		allWarningsAsErrors = true
 	}
 }
 
