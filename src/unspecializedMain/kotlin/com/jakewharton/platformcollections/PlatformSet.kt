@@ -1,8 +1,13 @@
-@file:Suppress("EXTENSION_SHADOWED_BY_MEMBER")
+@file:Suppress(
+	"EXTENSION_SHADOWED_BY_MEMBER",
+	"NOTHING_TO_INLINE",
+	"KotlinRedundantDiagnosticSuppress",
+)
 
 package com.jakewharton.platformcollections
 
-public actual typealias PlatformSet<E> = HashSet<E>
+@Suppress("ACTUAL_TYPE_ALIAS_NOT_TO_CLASS") // On the JVM it aliases to java.util.LinkedHashSet.
+public actual typealias PlatformSet<E> = LinkedHashSet<E>
 
 public actual inline fun <E> PlatformSet<E>.add(item: E) {
 	add(item)

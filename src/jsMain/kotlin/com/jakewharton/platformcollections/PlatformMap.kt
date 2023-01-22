@@ -5,7 +5,7 @@ package com.jakewharton.platformcollections
 public actual typealias PlatformMap<K, V> = JsMap<K, V>
 
 public actual fun <K, V> PlatformMap<K, V>.asMutableMap(): MutableMap<K, V> {
-	return JsMapMutableMap(this)
+	return PlatformMapMutableMap(this)
 }
 
 public actual inline fun <K, V> PlatformMap<K, V>.clear() {

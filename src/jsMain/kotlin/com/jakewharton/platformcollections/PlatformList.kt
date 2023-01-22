@@ -13,7 +13,7 @@ public actual inline fun <E> PlatformList<E>.add(index: Int, item: E) {
 }
 
 public actual fun <E> PlatformList<E>.asMutableList(): MutableList<E> {
-	return JsArrayMutableList(this)
+	return PlatformListMutableList(this)
 }
 
 public actual inline fun <E> PlatformList<E>.clear() {

@@ -62,10 +62,25 @@ kotlin {
 			}
 		}
 
-		// Implementations using regular kotlinx.collection types.
-		collectionsMain {}
+		// Implementations using Kotlin stdlib types or the JVM to which the stdlib aliases.
+		unspecializedMain {
+			dependsOn(commonMain)
+		}
+		// Implementations which typealias to platform-specific representations.
+		specializedMain {
+			dependsOn(commonMain)
+		}
+
 		// Implementations using Foundation.
-		darwinMain {}
+		darwinMain {
+			dependsOn(specializedMain)
+		}
+		jsMain {
+			dependsOn(specializedMain)
+		}
+		jvmMain {
+			dependsOn(unspecializedMain)
+		}
 	}
 
 	targets.configureEach { target ->
@@ -73,7 +88,7 @@ kotlin {
 			if (target.name.contains('os')) {
 				target.compilations.main.source(sourceSets.darwinMain)
 			} else {
-				target.compilations.main.source(sourceSets.collectionsMain)
+				target.compilations.main.source(sourceSets.unspecializedMain)
 			}
 		}
 	}

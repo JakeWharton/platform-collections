@@ -1,11 +1,13 @@
 @file:Suppress(
 	"EXTENSION_SHADOWED_BY_MEMBER",
 	"NOTHING_TO_INLINE",
+	"KotlinRedundantDiagnosticSuppress",
 )
 
 package com.jakewharton.platformcollections
 
-public actual typealias PlatformMap<K, V> = java.util.LinkedHashMap<K, V>
+@Suppress("ACTUAL_TYPE_ALIAS_NOT_TO_CLASS") // On the JVM it aliases to java.util.LinkedHashMap.
+public actual typealias PlatformMap<K, V> = LinkedHashMap<K, V>
 
 public actual inline fun <K, V> PlatformMap<K, V>.asMutableMap(): MutableMap<K, V> {
 	return this

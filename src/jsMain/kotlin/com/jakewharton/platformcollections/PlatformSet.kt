@@ -9,7 +9,7 @@ public actual inline fun <E> PlatformSet<E>.add(item: E) {
 }
 
 public actual fun <E> PlatformSet<E>.asMutableSet(): MutableSet<E> {
-	return JsSetMutableSet(this)
+	return PlatformSetMutableSet(this)
 }
 
 public actual inline fun <E> PlatformSet<E>.clear() {

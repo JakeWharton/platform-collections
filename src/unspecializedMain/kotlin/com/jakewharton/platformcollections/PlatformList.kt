@@ -1,7 +1,12 @@
-@file:Suppress("EXTENSION_SHADOWED_BY_MEMBER")
+@file:Suppress(
+	"EXTENSION_SHADOWED_BY_MEMBER",
+	"NOTHING_TO_INLINE",
+	"KotlinRedundantDiagnosticSuppress",
+)
 
 package com.jakewharton.platformcollections
 
+@Suppress("ACTUAL_TYPE_ALIAS_NOT_TO_CLASS") // On the JVM it aliases to java.util.ArrayList.
 public actual typealias PlatformList<E> = ArrayList<E>
 
 public actual inline fun <E> PlatformList<E>.add(item: E) {
