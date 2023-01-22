@@ -6,10 +6,10 @@ They do not conform to Kotlin's standard collection interfaces by default.
 
 |             | [`PlatformList<E>`][1] | [`PlatformSet<E>`][2]     | [`PlatformMap<K, V>`][3]   |
 |------------:|------------------------|---------------------------|----------------------------|
-|          JS | [`Array`][3]           | [`Set`][4]                | [`Map`][5]                 |
-|      Darwin | [`NSMutableArray`][6]  | [`NSMutableSet`][7]       | [`NSMutableDictionary`][8] |
-| JVM/Android | [`j.u.ArrayList`][9]   | [`j.u.LinkedHashSet`][10] | [`j.u.LinkedHashMap`][11]  |
-|      Others | [`k.c.ArrayList`][12]  | [`k.c.LinkedHashSet`][13] | [`k.c.LinkedHashMap`][14]  |
+|          JS | [`Array`][4]           | [`Set`][5]                | [`Map`][6]                 |
+|      Darwin | [`NSMutableArray`][7]  | [`NSMutableSet`][8]       | [`NSMutableDictionary`][9] |
+| JVM/Android | [`j.u.ArrayList`][10]  | [`j.u.LinkedHashSet`][11] | [`j.u.LinkedHashMap`][12]  |
+|      Others | [`k.c.ArrayList`][13]  | [`k.c.LinkedHashSet`][14] | [`k.c.LinkedHashMap`][15]  |
 
  [1]: https://jakewharton.github.io/platform-collections/docs/latest/platform-collections/com.jakewharton.platformcollections/-platform-list/index.html
  [2]: https://jakewharton.github.io/platform-collections/docs/latest/platform-collections/com.jakewharton.platformcollections/-platform-set/index.html
