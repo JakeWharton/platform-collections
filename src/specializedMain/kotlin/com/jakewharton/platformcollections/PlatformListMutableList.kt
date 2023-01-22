@@ -28,7 +28,9 @@ internal class PlatformListMutableList<E>(
 	}
 
 	override fun removeAt(index: Int): E {
-		TODO()
+		val old = list[index]
+		list.removeAt(index)
+		return old
 	}
 
 	override fun set(index: Int, element: E): E {

@@ -74,6 +74,10 @@ public actual fun <E> PlatformList<E>.lastIndexOf(item: E): Int {
 	return if (index == NSNotFound) -1 else index.convert()
 }
 
+public actual inline fun <E> PlatformList<E>.removeAt(index: Int) {
+	storage.removeObjectAtIndex(index.convert())
+}
+
 public actual inline fun <E> PlatformList<E>.set(index: Int, item: E) {
 	storage.replaceObjectAtIndex(index.convert(), item)
 }

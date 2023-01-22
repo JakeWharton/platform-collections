@@ -41,6 +41,10 @@ public actual inline fun <E> PlatformList<E>.lastIndexOf(item: E): Int {
 	return lastIndexOf(item)
 }
 
+public actual inline fun <E> PlatformList<E>.removeAt(index: Int) {
+	splice(index, 1)
+}
+
 public actual inline fun <E> PlatformList<E>.set(index: Int, item: E) {
 	splice(index, 1, item)
 }

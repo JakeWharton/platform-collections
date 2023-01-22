@@ -36,6 +36,8 @@ public inline fun <E> PlatformList<E>.isNotEmpty(): Boolean {
 
 public expect fun <E> PlatformList<E>.lastIndexOf(item: E): Int
 
+public expect fun <E> PlatformList<E>.removeAt(index: Int)
+
 public expect fun <E> PlatformList<E>.set(index: Int, item: E)
 
 public expect val <E> PlatformList<E>.size: Int
