@@ -9,14 +9,15 @@ import platform.Foundation.containsObject
 import platform.Foundation.enumerateObjectsUsingBlock
 import platform.Foundation.removeAllObjects
 
-@Suppress("ACTUAL_WITHOUT_EXPECT") // Our use of 'value' fails the matcher.
-public actual typealias PlatformSet<E> = MutableSet<E>
-
-public value class MutableSet<@Suppress("unused") E>
+@Suppress(
+	"ACTUAL_WITHOUT_EXPECT", // Our use of 'value' fails the matcher.
+	"unused", // Type parameter matches expect and needed for extensions.
+)
+public actual value class PlatformSet<E>
 private constructor(
 	public val storage: NSMutableSet,
 ) {
-	public constructor() : this(NSMutableSet())
+	public actual constructor() : this(NSMutableSet())
 }
 
 public actual inline fun <E> PlatformSet<E>.add(item: E) {

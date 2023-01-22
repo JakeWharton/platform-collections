@@ -12,14 +12,15 @@ import platform.Foundation.indexOfObjectWithOptions
 import platform.Foundation.removeAllObjects
 import platform.darwin.NSInteger
 
-@Suppress("ACTUAL_WITHOUT_EXPECT") // Our use of 'value' fails the matcher.
-public actual typealias PlatformList<E> = MutableArray<E>
-
-public value class MutableArray<@Suppress("unused") E>
+@Suppress(
+	"ACTUAL_WITHOUT_EXPECT", // Our use of 'value' fails the matcher.
+	"unused", // Type parameter matches expect and needed for extensions.
+)
+public actual value class PlatformList<E>
 private constructor(
 	public val storage: NSMutableArray,
 ) {
-	public constructor() : this(NSMutableArray())
+	public actual constructor() : this(NSMutableArray())
 }
 
 public actual inline fun <E> PlatformList<E>.add(item: E) {

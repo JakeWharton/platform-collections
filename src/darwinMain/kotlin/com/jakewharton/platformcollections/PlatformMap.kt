@@ -10,15 +10,15 @@ import platform.Foundation.enumerateKeysAndObjectsUsingBlock
 import platform.Foundation.removeAllObjects
 import platform.darwin.nil
 
-@Suppress("ACTUAL_WITHOUT_EXPECT") // Our use of 'value' fails the matcher.
-public actual typealias PlatformMap<K, V> = MutableMap<K, V>
-
-@Suppress("unused") // Type parameters match expect and for extensions.
-public value class MutableMap<K, V>
+@Suppress(
+	"ACTUAL_WITHOUT_EXPECT", // Our use of 'value' fails the matcher.
+	"unused", // Type parameters match expect and needed for extensions.
+)
+public actual value class PlatformMap<K, V>
 private constructor(
 	public val storage: NSMutableDictionary,
 ) {
-	public constructor() : this(NSMutableDictionary())
+	public actual constructor() : this(NSMutableDictionary())
 }
 
 public actual inline fun <K, V> PlatformMap<K, V>.asMutableMap(): MutableMap<K, V> {
