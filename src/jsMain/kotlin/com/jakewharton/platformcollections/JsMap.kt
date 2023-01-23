@@ -1,5 +1,6 @@
 package com.jakewharton.platformcollections
 
+/** @suppress */
 @JsName("Map")
 public external class JsMap<K, V> {
 	public val size: Int

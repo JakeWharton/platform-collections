@@ -1,5 +1,6 @@
 package com.jakewharton.platformcollections
 
+/** @suppress */
 @JsName("Set")
 public external class JsSet<E> {
 	public val size: Int
