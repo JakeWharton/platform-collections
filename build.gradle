@@ -76,6 +76,10 @@ kotlin {
 		darwinMain {
 			dependsOn(specializedMain)
 		}
+		darwinTest {
+			dependsOn(commonTest)
+		}
+
 		jsMain {
 			dependsOn(specializedMain)
 		}
@@ -88,6 +92,7 @@ kotlin {
 		if (target.platformType == KotlinPlatformType.native) {
 			if (target.name.contains('os')) {
 				target.compilations.main.source(sourceSets.darwinMain)
+				target.compilations.test.source(sourceSets.darwinTest)
 			} else {
 				target.compilations.main.source(sourceSets.unspecializedMain)
 			}

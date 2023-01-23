@@ -8,7 +8,10 @@ public actual inline fun <E> PlatformList<E>.add(item: E) {
 	push(item)
 }
 
-public actual inline fun <E> PlatformList<E>.add(index: Int, item: E) {
+public actual fun <E> PlatformList<E>.add(index: Int, item: E) {
+	if (index < 0 || index > length) {
+		throw IndexOutOfBoundsException("Index $index, size: $length")
+	}
 	splice(index, 0, item)
 }
 
@@ -24,7 +27,10 @@ public actual inline operator fun <E> PlatformList<E>.contains(item: E): Boolean
 	return includes(item)
 }
 
-public actual inline operator fun <E> PlatformList<E>.get(index: Int): E {
+public actual operator fun <E> PlatformList<E>.get(index: Int): E {
+	if (index < 0 || index >= length) {
+		throw IndexOutOfBoundsException("Index $index, size: $length")
+	}
 	@Suppress("UnsafeCastFromDynamic") // Avoids yet another set of temporary vars.
 	return asDynamic()[index]
 }
@@ -52,21 +58,12 @@ public actual inline fun <E> PlatformList<E>.set(index: Int, item: E) {
 public actual inline val <E> PlatformList<E>.size: Int get() = length
 
 public actual fun <E> PlatformList<E>.toMutableList(): MutableList<E> {
+	val self = asDynamic()
+	val size = size // Avoid two property reads in JS.
 	val arrayList = ArrayList<E>(size)
-	@Suppress("UNUSED_VARIABLE") // Used in JS code block below.
-	val storage = this
-	// Kotlin loops generate verbose JS in the form:
-	//   var i = 0
-	//   if (i < size)
-	//     do {
-	//       i++
-	//       ...
-	//     while (i < size);
-	// so hand-roll a normal JS for-loop for decent size and performance.
-	js("""
-			for (var i = 0, size = storage.length; i < size; ++i) {
-				arrayList.add(storage[i]);
-			}
-		""")
+	repeat(size) { index ->
+		@Suppress("UnsafeCastFromDynamic") // Avoids yet another set of temporary vars.
+		arrayList.add(self[index])
+	}
 	return arrayList
 }
