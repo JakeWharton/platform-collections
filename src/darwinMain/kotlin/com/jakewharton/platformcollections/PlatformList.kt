@@ -1,9 +1,16 @@
 @file:OptIn(UnsafeNumber::class)
+@file:Suppress(
+	"INVISIBLE_MEMBER",
+	"INVISIBLE_REFERENCE",
+)
 
 package com.jakewharton.platformcollections
 
+import kotlin.native.internal.NSMutableArrayAsKMutableList
 import kotlinx.cinterop.UnsafeNumber
 import kotlinx.cinterop.convert
+import kotlinx.cinterop.interpretObjCPointer
+import kotlinx.cinterop.objcPtr
 import platform.Foundation.NSEnumerationReverse
 import platform.Foundation.NSMutableArray
 import platform.Foundation.NSNotFound
@@ -31,8 +38,9 @@ public actual inline fun <E> PlatformList<E>.add(index: Int, item: E) {
 	storage.insertObject(item, index.convert())
 }
 
-public actual fun <E> PlatformList<E>.asMutableList(): MutableList<E> {
-	return PlatformListMutableList(this)
+public actual inline fun <E> PlatformList<E>.asMutableList(): MutableList<E> {
+	@Suppress("UNCHECKED_CAST") // It's all E's.
+	return interpretObjCPointer<NSMutableArrayAsKMutableList>(storage.objcPtr()) as MutableList<E>
 }
 
 public actual inline fun <E> PlatformList<E>.clear() {
@@ -84,6 +92,6 @@ public actual inline fun <E> PlatformList<E>.set(index: Int, item: E) {
 
 public actual inline val <E> PlatformList<E>.size: Int get() = storage.count.toInt()
 
-public actual fun <E> PlatformList<E>.toMutableList(): MutableList<E> {
-	TODO()
+public actual inline fun <E> PlatformList<E>.toMutableList(): MutableList<E> {
+	return ArrayList(asMutableList())
 }

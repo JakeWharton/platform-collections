@@ -52,6 +52,7 @@ class PlatformListTest {
 		assertEquals(listOf("one", "two"), kotlinList)
 	}
 
+	@DarwinIgnore // TODO https://github.com/JetBrains/kotlin/pull/5085
 	@Test fun asListIsRandomAccess() {
 		val list = PlatformList<String>().asList()
 		assertTrue(list is RandomAccess)
@@ -66,6 +67,7 @@ class PlatformListTest {
 		assertEquals(listOf("one", "two"), kotlinList)
 	}
 
+	@DarwinIgnore // TODO https://github.com/JetBrains/kotlin/pull/5085
 	@Test fun asMutableListIsRandomAccess() {
 		val list = PlatformList<String>().asMutableList()
 		assertTrue(list is RandomAccess)
@@ -190,7 +192,6 @@ class PlatformListTest {
 		assertEquals(-1, list.lastIndexOf("four"))
 	}
 
-	@DarwinIgnore // TODO implement
 	@Test fun toList() {
 		val platformList = PlatformList<String>()
 		platformList.add("one")
@@ -200,13 +201,11 @@ class PlatformListTest {
 		assertEquals(listOf("one"), kotlinList)
 	}
 
-	@DarwinIgnore // TODO implement
 	@Test fun toListIsRandomAccess() {
 		val list = PlatformList<String>().toList()
 		assertTrue(list is RandomAccess)
 	}
 
-	@DarwinIgnore // TODO implement
 	@Test fun toMutableList() {
 		val platformList = PlatformList<String>()
 		platformList.add("one")
@@ -216,13 +215,11 @@ class PlatformListTest {
 		assertEquals(listOf("one"), kotlinList)
 	}
 
-	@DarwinIgnore // TODO implement
 	@Test fun toMutableListIsRandomAccess() {
 		val list = PlatformList<String>().toMutableList()
 		assertTrue(list is RandomAccess)
 	}
 
-	@DarwinIgnore // TODO implement
 	@Test fun toMutableListAdd() {
 		val platformList = PlatformList<String>()
 		platformList.add("one")
