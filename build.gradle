@@ -88,13 +88,13 @@ kotlin {
 		}
 	}
 
-	targets.configureEach { target ->
+	targets.each { target ->
 		if (target.platformType == KotlinPlatformType.native) {
 			if (target.name.contains('os')) {
-				target.compilations.main.source(sourceSets.darwinMain)
-				target.compilations.test.source(sourceSets.darwinTest)
+				target.compilations.main.defaultSourceSet.dependsOn(sourceSets.darwinMain)
+				target.compilations.test.defaultSourceSet.dependsOn(sourceSets.darwinTest)
 			} else {
-				target.compilations.main.source(sourceSets.unspecializedMain)
+				target.compilations.main.defaultSourceSet.dependsOn(sourceSets.unspecializedMain)
 			}
 		}
 	}
