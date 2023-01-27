@@ -2,7 +2,7 @@ package com.jakewharton.platformcollections
 
 internal class PlatformListMutableList<E>(
 	private val list: PlatformList<E>,
-) : AbstractMutableList<E>() {
+) : AbstractMutableList<E>(), RandomAccess {
 	override fun add(index: Int, element: E) {
 		list.add(index, element)
 	}
