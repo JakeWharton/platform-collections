@@ -31,5 +31,13 @@ public actual inline fun <E> PlatformSet<E>.remove(item: E) {
 public actual inline val <E> PlatformSet<E>.size: Int get() = size
 
 public actual fun <E> PlatformSet<E>.toMutableSet(): MutableSet<E> {
-	TODO()
+	val self = asDynamic()
+	// Currently JS sets in the Kotlin stdlib are a travesty of abstraction. They ignore
+	// capacity sizing because after many layers they bottom out in a JS object.
+	val set = LinkedHashSet<E>()
+	// TODO Switch to iterator symbol usage?
+	self.forEach { item ->
+		set.add(item)
+	}
+	return set
 }
