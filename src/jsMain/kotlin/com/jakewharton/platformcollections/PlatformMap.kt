@@ -35,5 +35,13 @@ public actual inline fun <K, V> PlatformMap<K, V>.remove(key: K) {
 public actual inline val <K, V> PlatformMap<K, V>.size: Int get() = size
 
 public actual fun <K, V> PlatformMap<K, V>.toMutableMap(): MutableMap<K, V> {
-	TODO("Not yet implemented")
+	val self = asDynamic()
+	// Currently JS sets in the Kotlin stdlib are a travesty of abstraction. They ignore
+	// capacity sizing because after many layers they bottom out in a JS object.
+	val map = LinkedHashMap<K, V>()
+	// TODO Switch to iterator symbol usage?
+	self.forEach { value, key ->
+		map.put(key, value)
+	}
+	return map
 }
