@@ -3,10 +3,9 @@
 package com.jakewharton.platformcollections
 
 import kotlinx.cinterop.UnsafeNumber
-import platform.Foundation.NSMutableArray
 import platform.Foundation.NSMutableSet
+import platform.Foundation.allObjects
 import platform.Foundation.containsObject
-import platform.Foundation.enumerateObjectsUsingBlock
 import platform.Foundation.removeAllObjects
 
 @Suppress(
@@ -49,5 +48,8 @@ public actual inline fun <E> PlatformSet<E>.remove(item: E) {
 public actual inline val <E> PlatformSet<E>.size: Int get() = storage.count.toInt()
 
 public actual inline fun <E> PlatformSet<E>.toMutableSet(): MutableSet<E> {
-	TODO()
+	// TODO Use fast enumeration protocol per
+	//  https://darkdust.net/writings/objective-c/nsarray-enumeration-performance
+	@Suppress("UNCHECKED_CAST")
+	return storage.allObjects.toMutableSet() as MutableSet<E>
 }

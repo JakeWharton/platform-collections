@@ -126,7 +126,6 @@ class PlatformSetTest {
 		assertEquals(2, set.size)
 	}
 
-	@DarwinIgnore // TODO implement
 	@Test fun toSet() {
 		val platformSet = PlatformSet<String>()
 		platformSet.add("one")
@@ -136,7 +135,6 @@ class PlatformSetTest {
 		assertEquals(setOf("one"), kotlinSet)
 	}
 
-	@DarwinIgnore // TODO implement
 	@Test fun toMutableSet() {
 		val platformSet = PlatformSet<String>()
 		platformSet.add("one")
@@ -146,7 +144,6 @@ class PlatformSetTest {
 		assertEquals(setOf("one"), kotlinSet)
 	}
 
-	@DarwinIgnore // TODO implement
 	@Test fun toMutableSetAdd() {
 		val platformSet = PlatformSet<String>()
 		platformSet.add("one")

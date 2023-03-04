@@ -234,7 +234,6 @@ class PlatformMapTest {
 		assertEquals(2, map.size)
 	}
 
-	@DarwinIgnore // TODO implement
 	@Test fun toMap() {
 		val platformMap = PlatformMap<String, String>()
 		platformMap.put("one", "two")
@@ -244,7 +243,6 @@ class PlatformMapTest {
 		assertEquals(mapOf("one" to "two"), kotlinMap)
 	}
 
-	@DarwinIgnore // TODO implement
 	@Test fun toMutableMap() {
 		val platformMap = PlatformMap<String, String>()
 		platformMap.put("one", "two")
@@ -254,7 +252,6 @@ class PlatformMapTest {
 		assertEquals(mapOf("one" to "two"), kotlinMap)
 	}
 
-	@DarwinIgnore // TODO implement
 	@Test fun toMutableMapAdd() {
 		val platformMap = PlatformMap<String, String>()
 		platformMap.put("one", "two")
