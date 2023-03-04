@@ -85,5 +85,14 @@ public actual inline fun <E> PlatformList<E>.set(index: Int, item: E) {
 public actual inline val <E> PlatformList<E>.size: Int get() = storage.count.toInt()
 
 public actual fun <E> PlatformList<E>.toMutableList(): MutableList<E> {
-	TODO()
+	// TODO Use fast enumeration protocol per
+	//  https://darkdust.net/writings/objective-c/nsarray-enumeration-performance
+	val storage = storage
+	val size = storage.count.toInt()
+	val arrayList = ArrayList<E>(size)
+	repeat(size) { index ->
+		@Suppress("UNCHECKED_CAST")
+		arrayList.add(storage.objectAtIndex(index.convert()) as E)
+	}
+	return arrayList
 }

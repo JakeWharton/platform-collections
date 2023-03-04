@@ -5,7 +5,6 @@ package com.jakewharton.platformcollections
 import kotlinx.cinterop.UnsafeNumber
 import platform.Foundation.NSCopyingProtocol
 import platform.Foundation.NSMutableDictionary
-import platform.Foundation.NSMutableSet
 import platform.Foundation.enumerateKeysAndObjectsUsingBlock
 import platform.Foundation.removeAllObjects
 import platform.darwin.nil
@@ -53,5 +52,12 @@ public actual inline fun <K, V> PlatformMap<K, V>.remove(key: K) {
 public actual inline val <K, V> PlatformMap<K, V>.size: Int get() = storage.count.toInt()
 
 public actual inline fun <K, V> PlatformMap<K, V>.toMutableMap(): MutableMap<K, V> {
-	TODO()
+	// Unlike the JVM and per https://github.com/JetBrains/kotlin/blob/ca7d1d019474fee468a756079e099a9b1da7d3c0/libraries/stdlib/native-wasm/src/kotlin/collections/HashMap.kt#L36-L37
+	// this initial value is used to directly size the underlying storage.
+	val map = LinkedHashMap<K, V>(size)
+	storage.enumerateKeysAndObjectsUsingBlock { key, value, _ ->
+		@Suppress("UNCHECKED_CAST")
+		map[key as K] = value as V
+	}
+	return map
 }
