@@ -3,6 +3,7 @@ package com.jakewharton.platformcollections
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFails
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -176,6 +177,102 @@ class PlatformListTest {
 		assertFalse(list.isNotEmpty())
 		list.add("one")
 		assertTrue(list.isNotEmpty())
+	}
+
+	@Test fun iterator() {
+		val list = PlatformList<String>()
+		list.add("one")
+		list.add("two")
+
+		val iterator = list.iterator()
+		assertEquals("one", iterator.next())
+		assertEquals("two", iterator.next())
+		assertFailsWith<NoSuchElementException> {
+			iterator.next()
+		}
+	}
+
+	@Test fun iteratorHasNext() {
+		val list = PlatformList<String>()
+		list.add("one")
+		list.add("two")
+
+		val iterator = list.iterator()
+		assertTrue(iterator.hasNext())
+		iterator.next()
+		assertTrue(iterator.hasNext())
+		iterator.next()
+		assertFalse(iterator.hasNext())
+	}
+
+	@Test fun iteratorRemove() {
+		val list = PlatformList<String>()
+		list.add("one")
+		list.add("two")
+
+		val iterator = list.iterator()
+		iterator.next()
+		iterator.remove()
+		assertEquals(1, list.size)
+		assertEquals("two", list[0])
+	}
+
+	@Test fun iteratorRemoveAfterHasNextFalse() {
+		val list = PlatformList<String>()
+		list.add("one")
+		list.add("two")
+
+		val iterator = list.iterator()
+		iterator.next()
+		iterator.next()
+		assertFalse(iterator.hasNext()) // Should not affect removal ability.
+		iterator.remove()
+		assertEquals(1, list.size)
+		assertEquals("one", list[0])
+	}
+
+	@DarwinIgnore // Objective-C's exceptions cannot be caught.
+	@Test fun iteratorRemoveBeforeNextThrows() {
+		val list = PlatformList<String>()
+		list.add("one")
+		list.add("two")
+
+		val iterator = list.iterator()
+		assertFailsWith<IllegalStateException> {
+			iterator.remove()
+		}
+		assertEquals(2, list.size)
+	}
+
+	@DarwinIgnore // Objective-C's exceptions cannot be caught.
+	@Test fun iteratorRemoveTwiceThrows() {
+		val list = PlatformList<String>()
+		list.add("one")
+		list.add("two")
+
+		val iterator = list.iterator()
+		iterator.next()
+		iterator.remove()
+		assertFailsWith<IllegalStateException> {
+			iterator.remove()
+		}
+		assertEquals(1, list.size)
+	}
+
+	@DarwinIgnore // Objective-C's exceptions cannot be caught.
+	@Test fun iteratorRemoveAfterHasNextThrows() {
+		val list = PlatformList<String>()
+		list.add("one")
+		list.add("two")
+
+		val iterator = list.iterator()
+		iterator.next()
+		iterator.remove()
+		assertTrue(iterator.hasNext()) // Should not reset removal ability.
+		assertFailsWith<IllegalStateException> {
+			iterator.remove()
+		}
+		assertEquals(1, list.size)
 	}
 
 	@Test fun lastIndexOf() {

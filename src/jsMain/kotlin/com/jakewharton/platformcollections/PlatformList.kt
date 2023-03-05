@@ -43,6 +43,10 @@ public actual inline fun <E> PlatformList<E>.isEmpty(): Boolean {
 	return length == 0
 }
 
+public actual operator fun <E> PlatformList<E>.iterator(): MutableIterator<E> {
+	return PlatformListMutableIterator(this)
+}
+
 public actual inline fun <E> PlatformList<E>.lastIndexOf(item: E): Int {
 	return lastIndexOf(item)
 }
