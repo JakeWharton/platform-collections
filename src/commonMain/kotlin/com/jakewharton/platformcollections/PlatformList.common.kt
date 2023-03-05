@@ -34,6 +34,8 @@ public inline fun <E> PlatformList<E>.isNotEmpty(): Boolean {
 	return !isEmpty()
 }
 
+public expect operator fun <E> PlatformList<E>.iterator(): MutableIterator<E>
+
 public expect fun <E> PlatformList<E>.lastIndexOf(item: E): Int
 
 public expect fun <E> PlatformList<E>.removeAt(index: Int)

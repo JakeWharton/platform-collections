@@ -63,6 +63,10 @@ public actual inline fun <E> PlatformList<E>.isEmpty(): Boolean {
 	return storage.count.toInt() == 0
 }
 
+public actual operator fun <E> PlatformList<E>.iterator(): MutableIterator<E> {
+	return PlatformListMutableIterator(this)
+}
+
 public actual fun <E> PlatformList<E>.lastIndexOf(item: E): Int {
 	// Kotlin thinks this function returns NSUInteger, but it's documented to return NSInteger.
 	// The not found value is NSNotFound which is NSIntegerMax, an NSInteger.
