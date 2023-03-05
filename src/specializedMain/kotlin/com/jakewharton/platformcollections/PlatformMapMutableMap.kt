@@ -39,9 +39,29 @@ internal class PlatformMapMutableMap<K, V>(
 			set
 		}
 
+	override fun clear() {
+		map.clear()
+	}
+
+	override fun containsKey(key: K): Boolean {
+		return map.contains(key)
+	}
+
+	override fun get(key: K): V? {
+		return map[key]
+	}
+
 	override fun put(key: K, value: V): V? {
 		val old = map[key]
 		map.put(key, value)
 		return old
 	}
+
+	override fun remove(key: K): V? {
+		val value = map[key]
+		map.remove(key)
+		return value
+	}
+
+	override val size: Int get() = map.size
 }
