@@ -1,3 +1,4 @@
+import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
@@ -104,6 +105,10 @@ tasks.withType(KotlinCompilationTask).configureEach {
 	compilerOptions {
 		allWarningsAsErrors = true
 	}
+}
+
+tasks.withType(DokkaTask).configureEach {
+	notCompatibleWithConfigurationCache("https://github.com/Kotlin/dokka/issues/1217")
 }
 
 repositories {
