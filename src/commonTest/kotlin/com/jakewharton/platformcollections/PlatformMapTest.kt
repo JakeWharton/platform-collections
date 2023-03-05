@@ -43,8 +43,6 @@ class PlatformMapTest {
 		assertTrue("three" in platformMap)
 	}
 
-	@DarwinIgnore // TODO implement
-	@JsIgnore // TODO implement
 	@Test fun asMutableMapClear() {
 		val platformMap = PlatformMap<String, String>()
 		platformMap.put("one", "two")
