@@ -23,7 +23,7 @@ public actual inline fun <E> PlatformSet<E>.isEmpty(): Boolean {
 }
 
 public actual operator fun <E> PlatformSet<E>.iterator(): MutableIterator<E> {
-	return PlatformSetMutableIterator(this, values())
+	return JsSetMutableIterator(this, values())
 }
 
 public actual inline fun <E> PlatformSet<E>.remove(item: E) {

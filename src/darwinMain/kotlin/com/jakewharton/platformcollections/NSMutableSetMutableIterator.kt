@@ -2,7 +2,7 @@ package com.jakewharton.platformcollections
 
 import platform.Foundation.NSMutableSet
 
-internal class PlatformSetMutableIterator<E>(
+internal class NSMutableSetMutableIterator<E>(
 	private val storage: NSMutableSet,
 	private val iterator: Iterator<Any?>,
 ) : MutableIterator<E> {

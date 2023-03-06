@@ -2,6 +2,7 @@
 
 package com.jakewharton.platformcollections
 
+import kotlin.collections.MutableMap.MutableEntry
 import kotlinx.cinterop.UnsafeNumber
 import platform.Foundation.NSCopyingProtocol
 import platform.Foundation.NSMutableDictionary
@@ -39,6 +40,12 @@ public actual inline operator fun <K, V> PlatformMap<K, V>.get(key: K): V? {
 
 public actual inline fun <K, V> PlatformMap<K, V>.isEmpty(): Boolean {
 	return storage.count.toInt() == 0
+}
+
+public actual operator fun <K, V> PlatformMap<K, V>.iterator(): MutableIterator<MutableEntry<K, V>> {
+	// Darwin APIs do not allow mutation while enumerating. We are forced to snapshot
+	// the keys and values in order to support this case.
+	return NSMutableDictionaryMutableIterator(storage, toMap().iterator())
 }
 
 public actual inline fun <K, V> PlatformMap<K, V>.put(key: K, value: V) {

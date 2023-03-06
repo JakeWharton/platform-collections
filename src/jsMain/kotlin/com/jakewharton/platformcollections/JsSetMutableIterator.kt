@@ -1,6 +1,6 @@
 package com.jakewharton.platformcollections
 
-internal class PlatformSetMutableIterator<E>(
+internal class JsSetMutableIterator<E>(
 	private val set: JsSet<E>,
 	private val iterator: JsIterator<E>,
 ) : MutableIterator<E> {
@@ -19,11 +19,11 @@ internal class PlatformSetMutableIterator<E>(
 
 	override fun next(): E {
 		if (hasNext()) {
-			val current = current.unsafeCast<JsIteratorResult<E>>()
+			val item = current.unsafeCast<JsIteratorResult<E>>().value
 			canRemove = true
-			lastValue = current.value
+			lastValue = item
 			needsNext = true
-			return current.value
+			return item
 		}
 		throw NoSuchElementException()
 	}

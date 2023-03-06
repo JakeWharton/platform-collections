@@ -6,6 +6,8 @@
 
 package com.jakewharton.platformcollections
 
+import kotlin.collections.MutableMap.MutableEntry
+
 @Suppress("unused") // Type parameters on actual and extensions.
 public expect class PlatformMap<K, V>
 public constructor()
@@ -32,6 +34,8 @@ public expect fun <K, V> PlatformMap<K, V>.isEmpty(): Boolean
 public inline fun <K, V> PlatformMap<K, V>.isNotEmpty(): Boolean {
 	return !isEmpty()
 }
+
+public expect operator fun <K, V> PlatformMap<K, V>.iterator(): MutableIterator<MutableEntry<K, V>>
 
 public expect fun <K, V> PlatformMap<K, V>.put(key: K, value: V)
 
