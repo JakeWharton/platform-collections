@@ -15,6 +15,15 @@ public external class JsMap<K, V> {
 	internal fun set(key: K, value: V)
 	@PublishedApi
 	internal fun clear()
+	@PublishedApi
+	internal fun entries(): JsIterator<JsEntry<K, V>>
 
 	override fun toString(): String
 }
+
+@Suppress("unused") // Type parameter used by extension function.
+internal external interface JsEntry<K, V>
+@Suppress("UnsafeCastFromDynamic")
+internal inline val <K, V> JsEntry<K, V>.key: K get() = asDynamic()[0]
+@Suppress("UnsafeCastFromDynamic")
+internal inline val <K, V> JsEntry<K, V>.value: V get() = asDynamic()[1]

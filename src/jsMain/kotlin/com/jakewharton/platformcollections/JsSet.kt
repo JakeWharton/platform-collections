@@ -13,6 +13,8 @@ public external class JsSet<E> {
 	internal fun has(item: E): Boolean
 	@PublishedApi
 	internal fun clear()
+	@PublishedApi
+	internal fun values(): JsIterator<E>
 
 	override fun toString(): String
 }

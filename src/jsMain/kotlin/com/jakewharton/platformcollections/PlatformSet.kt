@@ -33,7 +33,7 @@ public actual fun <E> PlatformSet<E>.toMutableSet(): MutableSet<E> {
 	// capacity sizing because after many layers they bottom out in a JS object.
 	val set = LinkedHashSet<E>()
 
-	val iterator = jsIterator()
+	val iterator = values()
 	while (true) {
 		val result = iterator.next()
 		if (result.done) break
