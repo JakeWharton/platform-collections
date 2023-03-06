@@ -2,7 +2,6 @@ package com.jakewharton.platformcollections
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertFails
 import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertNull
@@ -194,6 +193,108 @@ class PlatformMapTest {
 		assertFalse(map.isNotEmpty())
 		map.put("one", "two")
 		assertTrue(map.isNotEmpty())
+	}
+
+	@Test fun iterator() {
+		val map = PlatformMap<String, String>()
+		map.put("one", "two")
+		map.put("three", "four")
+
+		val iterator = map.iterator()
+		iterator.next().let {
+			assertEquals("one", it.key)
+			assertEquals("two", it.value)
+		}
+		iterator.next().let {
+			assertEquals("three", it.key)
+			assertEquals("four", it.value)
+		}
+		assertFailsWith<NoSuchElementException> {
+			iterator.next()
+		}
+	}
+
+	@Test fun iteratorHasNext() {
+		val map = PlatformMap<String, String>()
+		map.put("one", "two")
+		map.put("three", "four")
+
+		val iterator = map.iterator()
+		assertTrue(iterator.hasNext())
+		iterator.next()
+		assertTrue(iterator.hasNext())
+		iterator.next()
+		assertFalse(iterator.hasNext())
+	}
+
+	@Test fun iteratorRemove() {
+		val map = PlatformMap<String, String>()
+		map.put("one", "two")
+		map.put("three", "four")
+
+		val iterator = map.iterator()
+		iterator.next()
+		iterator.remove()
+		assertEquals(1, map.size)
+		assertTrue("three" in map)
+	}
+
+	@Test fun iteratorRemoveAfterHasNextFalse() {
+		val map = PlatformMap<String, String>()
+		map.put("one", "two")
+		map.put("three", "four")
+
+		val iterator = map.iterator()
+		iterator.next()
+		iterator.next()
+		assertFalse(iterator.hasNext()) // Should not affect removal ability.
+		iterator.remove()
+		assertEquals(1, map.size)
+		assertTrue("one" in map)
+	}
+
+	@DarwinIgnore // Objective-C's exceptions cannot be caught.
+	@Test fun iteratorRemoveBeforeNextThrows() {
+		val map = PlatformMap<String, String>()
+		map.put("one", "two")
+		map.put("three", "four")
+
+		val iterator = map.iterator()
+		assertFailsWith<IllegalStateException> {
+			iterator.remove()
+		}
+		assertEquals(2, map.size)
+	}
+
+	@DarwinIgnore // Objective-C's exceptions cannot be caught.
+	@Test fun iteratorRemoveTwiceThrows() {
+		val map = PlatformMap<String, String>()
+		map.put("one", "two")
+		map.put("three", "four")
+
+		val iterator = map.iterator()
+		iterator.next()
+		iterator.remove()
+		assertFailsWith<IllegalStateException> {
+			iterator.remove()
+		}
+		assertEquals(1, map.size)
+	}
+
+	@DarwinIgnore // Objective-C's exceptions cannot be caught.
+	@Test fun iteratorRemoveAfterHasNextThrows() {
+		val map = PlatformMap<String, String>()
+		map.put("one", "two")
+		map.put("three", "four")
+
+		val iterator = map.iterator()
+		iterator.next()
+		iterator.remove()
+		assertTrue(iterator.hasNext()) // Should not reset removal ability.
+		assertFailsWith<IllegalStateException> {
+			iterator.remove()
+		}
+		assertEquals(1, map.size)
 	}
 
 	@Test fun put() {

@@ -6,6 +6,9 @@
 
 package com.jakewharton.platformcollections
 
+import kotlin.collections.iterator as kotlinIterator
+import kotlin.collections.MutableMap.MutableEntry
+
 @Suppress("ACTUAL_TYPE_ALIAS_NOT_TO_CLASS") // On the JVM it aliases to java.util.LinkedHashMap.
 public actual typealias PlatformMap<K, V> = LinkedHashMap<K, V>
 
@@ -27,6 +30,10 @@ public actual inline operator fun <K, V> PlatformMap<K, V>.get(key: K): V? {
 
 public actual inline fun <K, V> PlatformMap<K, V>.isEmpty(): Boolean {
 	return isEmpty()
+}
+
+public actual inline operator fun <K, V> PlatformMap<K, V>.iterator(): MutableIterator<MutableEntry<K, V>> {
+	return kotlinIterator()
 }
 
 public actual inline fun <K, V> PlatformMap<K, V>.put(key: K, value: V) {

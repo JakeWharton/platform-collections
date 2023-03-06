@@ -1,5 +1,7 @@
 package com.jakewharton.platformcollections
 
+import kotlin.collections.MutableMap.MutableEntry
+
 public actual typealias PlatformMap<K, V> = JsMap<K, V>
 
 public actual fun <K, V> PlatformMap<K, V>.asMutableMap(): MutableMap<K, V> {
@@ -20,6 +22,10 @@ public actual inline operator fun <K, V> PlatformMap<K, V>.get(key: K): V? {
 
 public actual inline fun <K, V> PlatformMap<K, V>.isEmpty(): Boolean {
 	return size == 0
+}
+
+public actual operator fun <K, V> PlatformMap<K, V>.iterator(): MutableIterator<MutableEntry<K, V>> {
+	return JsMapMutableIterator(this, entries())
 }
 
 public actual inline fun <K, V> PlatformMap<K, V>.put(key: K, value: V) {
