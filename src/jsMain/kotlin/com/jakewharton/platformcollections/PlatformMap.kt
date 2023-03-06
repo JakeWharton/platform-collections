@@ -37,7 +37,7 @@ public actual fun <K, V> PlatformMap<K, V>.toMutableMap(): MutableMap<K, V> {
 	// capacity sizing because after many layers they bottom out in a JS object.
 	val map = LinkedHashMap<K, V>()
 
-	val iterator = jsIterator()
+	val iterator = entries()
 	while (true) {
 		val result = iterator.next()
 		if (result.done) break
