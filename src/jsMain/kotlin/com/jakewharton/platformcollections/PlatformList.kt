@@ -1,5 +1,3 @@
-@file:Suppress("EXTENSION_SHADOWED_BY_MEMBER")
-
 package com.jakewharton.platformcollections
 
 public actual typealias PlatformList<E> = JsArray<E>

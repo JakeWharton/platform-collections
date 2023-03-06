@@ -1,13 +1,18 @@
 package com.jakewharton.platformcollections
 
-/** @suppress */
+/** @suppress Type has to be public because of typealias */
 @JsName("Set")
 public external class JsSet<E> {
-	public val size: Int
-	public fun add(item: E)
-	public fun delete(item: E): Boolean
-	public fun has(item: E): Boolean
-	public fun clear()
-	public fun forEach(block: (E) -> Unit)
+	@PublishedApi
+	internal val size: Int
+	@PublishedApi
+	internal fun add(item: E)
+	@PublishedApi
+	internal fun delete(item: E): Boolean
+	@PublishedApi
+	internal fun has(item: E): Boolean
+	@PublishedApi
+	internal fun clear()
+
 	override fun toString(): String
 }
