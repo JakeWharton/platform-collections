@@ -33,6 +33,8 @@ public inline fun <E> PlatformSet<E>.isNotEmpty(): Boolean {
 	return !isEmpty()
 }
 
+public expect operator fun <E> PlatformSet<E>.iterator(): MutableIterator<E>
+
 public expect fun <E> PlatformSet<E>.remove(item: E)
 
 public expect val <E> PlatformSet<E>.size: Int

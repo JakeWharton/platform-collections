@@ -22,6 +22,10 @@ public actual inline fun <E> PlatformSet<E>.isEmpty(): Boolean {
 	return size == 0
 }
 
+public actual operator fun <E> PlatformSet<E>.iterator(): MutableIterator<E> {
+	return PlatformSetMutableIterator(this, values())
+}
+
 public actual inline fun <E> PlatformSet<E>.remove(item: E) {
 	delete(item)
 }

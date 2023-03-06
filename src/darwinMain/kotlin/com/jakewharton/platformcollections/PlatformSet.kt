@@ -40,6 +40,12 @@ public actual inline fun <E> PlatformSet<E>.isEmpty(): Boolean {
 	return storage.count.toInt() == 0
 }
 
+public actual operator fun <E> PlatformSet<E>.iterator(): MutableIterator<E> {
+	// Darwin APIs do not allow mutation while enumerating. We are forced to snapshot
+	// the values in order to support this case.
+	return PlatformSetMutableIterator(storage, storage.allObjects.iterator())
+}
+
 public actual inline fun <E> PlatformSet<E>.remove(item: E) {
 	storage.removeObject(item)
 }
