@@ -2,6 +2,7 @@ package com.jakewharton.platformcollections
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -100,6 +101,102 @@ class PlatformSetTest {
 		assertFalse(set.isNotEmpty())
 		set.add("one")
 		assertTrue(set.isNotEmpty())
+	}
+
+	@Test fun iterator() {
+		val set = PlatformSet<String>()
+		set.add("one")
+		set.add("two")
+
+		val iterator = set.iterator()
+		assertEquals("one", iterator.next())
+		assertEquals("two", iterator.next())
+		assertFailsWith<NoSuchElementException> {
+			iterator.next()
+		}
+	}
+
+	@Test fun iteratorHasNext() {
+		val set = PlatformSet<String>()
+		set.add("one")
+		set.add("two")
+
+		val iterator = set.iterator()
+		assertTrue(iterator.hasNext())
+		iterator.next()
+		assertTrue(iterator.hasNext())
+		iterator.next()
+		assertFalse(iterator.hasNext())
+	}
+
+	@Test fun iteratorRemove() {
+		val set = PlatformSet<String>()
+		set.add("one")
+		set.add("two")
+
+		val iterator = set.iterator()
+		iterator.next()
+		iterator.remove()
+		assertEquals(1, set.size)
+		assertTrue("two" in set)
+	}
+
+	@Test fun iteratorRemoveAfterHasNextFalse() {
+		val set = PlatformSet<String>()
+		set.add("one")
+		set.add("two")
+
+		val iterator = set.iterator()
+		iterator.next()
+		iterator.next()
+		assertFalse(iterator.hasNext()) // Should not affect removal ability.
+		iterator.remove()
+		assertEquals(1, set.size)
+		assertTrue("one" in set)
+	}
+
+	@DarwinIgnore // Objective-C's exceptions cannot be caught.
+	@Test fun iteratorRemoveBeforeNextThrows() {
+		val set = PlatformSet<String>()
+		set.add("one")
+		set.add("two")
+
+		val iterator = set.iterator()
+		assertFailsWith<IllegalStateException> {
+			iterator.remove()
+		}
+		assertEquals(2, set.size)
+	}
+
+	@DarwinIgnore // Objective-C's exceptions cannot be caught.
+	@Test fun iteratorRemoveTwiceThrows() {
+		val set = PlatformSet<String>()
+		set.add("one")
+		set.add("two")
+
+		val iterator = set.iterator()
+		iterator.next()
+		iterator.remove()
+		assertFailsWith<IllegalStateException> {
+			iterator.remove()
+		}
+		assertEquals(1, set.size)
+	}
+
+	@DarwinIgnore // Objective-C's exceptions cannot be caught.
+	@Test fun iteratorRemoveAfterHasNextThrows() {
+		val set = PlatformSet<String>()
+		set.add("one")
+		set.add("two")
+
+		val iterator = set.iterator()
+		iterator.next()
+		iterator.remove()
+		assertTrue(iterator.hasNext()) // Should not reset removal ability.
+		assertFailsWith<IllegalStateException> {
+			iterator.remove()
+		}
+		assertEquals(1, set.size)
 	}
 
 	@Test fun remove() {
