@@ -16,19 +16,7 @@ internal class PlatformMapMutableMap<K, V>(
 				}
 
 				override fun iterator(): MutableIterator<MutableEntry<K, V>> {
-					return object : MutableIterator<MutableEntry<K, V>> {
-						override fun hasNext(): Boolean {
-							TODO("Not yet implemented")
-						}
-
-						override fun next(): MutableEntry<K, V> {
-							TODO("Not yet implemented")
-						}
-
-						override fun remove() {
-							TODO("Not yet implemented")
-						}
-					}
+					return map.iterator()
 				}
 
 				override fun add(element: MutableEntry<K, V>): Boolean {

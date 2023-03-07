@@ -8,8 +8,6 @@ import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 class PlatformMapTest {
-	@DarwinIgnore // TODO implement
-	@JsIgnore // TODO implement
 	@Test fun asMap() {
 		val platformMap = PlatformMap<String, String>()
 		platformMap.put("one", "two")
@@ -19,8 +17,6 @@ class PlatformMapTest {
 		assertEquals(mapOf("one" to "two", "three" to "four"), kotlinMap)
 	}
 
-	@DarwinIgnore // TODO implement
-	@JsIgnore // TODO implement
 	@Test fun asMutableMap() {
 		val platformMap = PlatformMap<String, String>()
 		platformMap.put("one", "two")
@@ -30,8 +26,6 @@ class PlatformMapTest {
 		assertEquals(mapOf("one" to "two", "three" to "four"), kotlinMap)
 	}
 
-	@DarwinIgnore // TODO implement
-	@JsIgnore // TODO implement
 	@Test fun asMutableMapAdd() {
 		val platformMap = PlatformMap<String, String>()
 		platformMap.put("one", "two")
@@ -52,8 +46,6 @@ class PlatformMapTest {
 		assertEquals(0, platformMap.size)
 	}
 
-	@DarwinIgnore // TODO implement
-	@JsIgnore // TODO implement
 	@Test fun asMutableMapRemove() {
 		val platformMap = PlatformMap<String, String>()
 		platformMap.put("one", "two")
@@ -65,8 +57,6 @@ class PlatformMapTest {
 		assertFalse("one" in platformMap)
 	}
 
-	@DarwinIgnore // TODO implement
-	@JsIgnore // TODO implement
 	@Test fun asMutableMapKeysRemove() {
 		val platformMap = PlatformMap<String, String>()
 		platformMap.put("one", "two")
@@ -86,8 +76,6 @@ class PlatformMapTest {
 		}
 	}
 
-	@DarwinIgnore // TODO implement
-	@JsIgnore // TODO implement
 	@Test fun asMutableMapValuesRemove() {
 		val platformMap = PlatformMap<String, String>()
 		platformMap.put("one", "two")
@@ -99,7 +87,6 @@ class PlatformMapTest {
 		assertFalse("one" in platformMap)
 	}
 
-	@DarwinIgnore // TODO implement
 	@Test fun asMutableMapValuesAddThrows() {
 		val platformMap = PlatformMap<String, String>()
 		val kotlinMapValues = platformMap.asMutableMap().values
@@ -108,8 +95,6 @@ class PlatformMapTest {
 		}
 	}
 
-	@DarwinIgnore // TODO implement
-	@JsIgnore // TODO implement
 	@Test fun asMutableMapEntriesRemove() {
 		val platformMap = PlatformMap<String, String>()
 		platformMap.put("one", "two")
@@ -124,8 +109,6 @@ class PlatformMapTest {
 		assertFalse("one" in platformMap)
 	}
 
-	@DarwinIgnore // TODO implement
-	@JsIgnore // TODO implement
 	@Test fun asMutableMapEntriesSetValue() {
 		val platformMap = PlatformMap<String, String>()
 		platformMap.put("one", "two")
