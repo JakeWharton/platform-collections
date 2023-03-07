@@ -18,7 +18,7 @@ internal class PlatformSetMutableSet<E>(
 	}
 
 	override fun iterator(): MutableIterator<E> {
-		TODO()
+		return set.iterator()
 	}
 
 	override fun remove(element: E): Boolean {
