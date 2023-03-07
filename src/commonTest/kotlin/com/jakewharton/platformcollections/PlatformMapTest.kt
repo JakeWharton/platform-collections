@@ -253,7 +253,6 @@ class PlatformMapTest {
 		assertTrue("one" in map)
 	}
 
-	@DarwinIgnore // Objective-C's exceptions cannot be caught.
 	@Test fun iteratorRemoveBeforeNextThrows() {
 		val map = PlatformMap<String, String>()
 		map.put("one", "two")
@@ -266,7 +265,6 @@ class PlatformMapTest {
 		assertEquals(2, map.size)
 	}
 
-	@DarwinIgnore // Objective-C's exceptions cannot be caught.
 	@Test fun iteratorRemoveTwiceThrows() {
 		val map = PlatformMap<String, String>()
 		map.put("one", "two")
@@ -281,7 +279,6 @@ class PlatformMapTest {
 		assertEquals(1, map.size)
 	}
 
-	@DarwinIgnore // Objective-C's exceptions cannot be caught.
 	@Test fun iteratorRemoveAfterHasNextThrows() {
 		val map = PlatformMap<String, String>()
 		map.put("one", "two")
