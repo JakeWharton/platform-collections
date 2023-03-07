@@ -265,7 +265,7 @@ class PlatformListTest {
 		val iterator = list.iterator()
 		iterator.next()
 		iterator.remove()
-		assertTrue(iterator.hasNext()) // Should not reset removal ability.
+		assertTrue(iterator.hasNext())
 		assertFailsWith<IllegalStateException> {
 			iterator.remove()
 		}

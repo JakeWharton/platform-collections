@@ -41,9 +41,7 @@ public actual inline fun <E> PlatformSet<E>.isEmpty(): Boolean {
 }
 
 public actual operator fun <E> PlatformSet<E>.iterator(): MutableIterator<E> {
-	// Darwin APIs do not allow mutation while enumerating. We are forced to snapshot
-	// the values in order to support this case.
-	return NSMutableSetMutableIterator(storage, storage.allObjects.iterator())
+	return NSMutableSetMutableIterator(storage)
 }
 
 public actual inline fun <E> PlatformSet<E>.remove(item: E) {

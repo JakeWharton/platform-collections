@@ -270,7 +270,7 @@ class PlatformMapTest {
 		val iterator = map.iterator()
 		iterator.next()
 		iterator.remove()
-		assertTrue(iterator.hasNext()) // Should not reset removal ability.
+		assertTrue(iterator.hasNext())
 		assertFailsWith<IllegalStateException> {
 			iterator.remove()
 		}
