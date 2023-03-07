@@ -231,7 +231,6 @@ class PlatformListTest {
 		assertEquals("one", list[0])
 	}
 
-	@DarwinIgnore // Objective-C's exceptions cannot be caught.
 	@Test fun iteratorRemoveBeforeNextThrows() {
 		val list = PlatformList<String>()
 		list.add("one")
@@ -244,7 +243,6 @@ class PlatformListTest {
 		assertEquals(2, list.size)
 	}
 
-	@DarwinIgnore // Objective-C's exceptions cannot be caught.
 	@Test fun iteratorRemoveTwiceThrows() {
 		val list = PlatformList<String>()
 		list.add("one")
@@ -259,7 +257,6 @@ class PlatformListTest {
 		assertEquals(1, list.size)
 	}
 
-	@DarwinIgnore // Objective-C's exceptions cannot be caught.
 	@Test fun iteratorRemoveAfterHasNextThrows() {
 		val list = PlatformList<String>()
 		list.add("one")

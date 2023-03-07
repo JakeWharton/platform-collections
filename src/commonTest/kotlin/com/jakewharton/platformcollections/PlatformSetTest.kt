@@ -155,7 +155,6 @@ class PlatformSetTest {
 		assertTrue("one" in set)
 	}
 
-	@DarwinIgnore // Objective-C's exceptions cannot be caught.
 	@Test fun iteratorRemoveBeforeNextThrows() {
 		val set = PlatformSet<String>()
 		set.add("one")
@@ -168,7 +167,6 @@ class PlatformSetTest {
 		assertEquals(2, set.size)
 	}
 
-	@DarwinIgnore // Objective-C's exceptions cannot be caught.
 	@Test fun iteratorRemoveTwiceThrows() {
 		val set = PlatformSet<String>()
 		set.add("one")
@@ -183,7 +181,6 @@ class PlatformSetTest {
 		assertEquals(1, set.size)
 	}
 
-	@DarwinIgnore // Objective-C's exceptions cannot be caught.
 	@Test fun iteratorRemoveAfterHasNextThrows() {
 		val set = PlatformSet<String>()
 		set.add("one")
