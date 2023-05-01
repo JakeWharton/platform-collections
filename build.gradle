@@ -1,10 +1,13 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 buildscript {
 	dependencies {
 		classpath libs.kotlin.gradlePlugin
 		classpath libs.dokka.gradlePlugin
+		classpath libs.gradleMavenPublishPlugin
 	}
 	repositories {
 		mavenCentral()
@@ -12,7 +15,11 @@ buildscript {
 }
 
 apply plugin: 'org.jetbrains.kotlin.multiplatform'
+apply plugin: 'com.vanniktech.maven.publish'
 apply plugin: 'org.jetbrains.dokka'
+
+group = project.property("GROUP") as String
+version = project.property("VERSION_NAME") as String
 
 kotlin {
 	explicitApi()
@@ -98,6 +105,15 @@ kotlin {
 			}
 		}
 	}
+}
+
+tasks.withType(KotlinJvmCompile).configureEach {
+	compilerOptions.jvmTarget = JvmTarget.JVM_1_8
+}
+
+tasks.withType(JavaCompile).configureEach {
+	sourceCompatibility = JavaVersion.VERSION_1_8.toString()
+	targetCompatibility = JavaVersion.VERSION_1_8.toString()
 }
 
 tasks.withType(KotlinCompilationTask).configureEach {
