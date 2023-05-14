@@ -1,5 +1,7 @@
 package com.jakewharton.platformcollections
 
+import assertk.assertThat
+import assertk.assertions.isInstanceOf
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFails
@@ -55,7 +57,7 @@ class PlatformListTest {
 
 	@Test fun asListIsRandomAccess() {
 		val list = PlatformList<String>().asList()
-		assertTrue(list is RandomAccess)
+		assertThat(list).isInstanceOf<RandomAccess>()
 	}
 
 	@Test fun asMutableList() {
@@ -69,7 +71,7 @@ class PlatformListTest {
 
 	@Test fun asMutableListIsRandomAccess() {
 		val list = PlatformList<String>().asMutableList()
-		assertTrue(list is RandomAccess)
+		assertThat(list).isInstanceOf<RandomAccess>()
 	}
 
 	@Test fun asMutableListAdd() {
@@ -295,7 +297,7 @@ class PlatformListTest {
 
 	@Test fun toListIsRandomAccess() {
 		val list = PlatformList<String>().toList()
-		assertTrue(list is RandomAccess)
+		assertThat(list).isInstanceOf<RandomAccess>()
 	}
 
 	@Test fun toMutableList() {
@@ -309,7 +311,7 @@ class PlatformListTest {
 
 	@Test fun toMutableListIsRandomAccess() {
 		val list = PlatformList<String>().toMutableList()
-		assertTrue(list is RandomAccess)
+		assertThat(list).isInstanceOf<RandomAccess>()
 	}
 
 	@Test fun toMutableListAdd() {
