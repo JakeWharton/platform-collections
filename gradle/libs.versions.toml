@@ -7,4 +7,4 @@ kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotl
 
 dokka-gradlePlugin = "org.jetbrains.dokka:dokka-gradle-plugin:1.8.10"
 gradleMavenPublishPlugin = "com.vanniktech:gradle-maven-publish-plugin:0.25.2"
-assertk = "com.willowtreeapps.assertk:assertk:0.26"
+assertk = "com.willowtreeapps.assertk:assertk:0.26.1"
