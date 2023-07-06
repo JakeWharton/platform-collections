@@ -1,8 +1,9 @@
-@file:OptIn(UnsafeNumber::class)
+@file:OptIn(UnsafeNumber::class, ExperimentalForeignApi::class)
 
 package com.jakewharton.platformcollections
 
 import kotlin.collections.MutableMap.MutableEntry
+import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.UnsafeNumber
 import platform.Foundation.NSCopyingProtocol
 import platform.Foundation.NSMutableDictionary
