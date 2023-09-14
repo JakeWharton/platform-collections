@@ -1,5 +1,6 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
+import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
@@ -29,7 +30,6 @@ kotlin {
 	androidNativeX64()
 	androidNativeX86()
 
-	iosArm32()
 	iosArm64()
 	iosSimulatorArm64()
 	iosX64()
@@ -42,7 +42,6 @@ kotlin {
 	macosX64()
 
 	mingwX64()
-	mingwX86()
 
 	js {
 		nodejs()
@@ -54,14 +53,13 @@ kotlin {
 	tvosSimulatorArm64()
 	tvosX64()
 
-	wasm32()
+	wasmJs().nodejs()
 
 	watchosArm32()
 	watchosArm64()
 	watchosDeviceArm64()
 	watchosSimulatorArm64()
 	watchosX64()
-	watchosX86()
 
 	sourceSets {
 		commonTest {
@@ -97,7 +95,7 @@ kotlin {
 	}
 
 	targets.each { target ->
-		if (target.platformType == KotlinPlatformType.native) {
+		if (target.platformType == KotlinPlatformType.native || target.platformType == KotlinPlatformType.wasm) {
 			if (target.name.contains('os')) {
 				target.compilations.main.defaultSourceSet.dependsOn(sourceSets.darwinMain)
 				target.compilations.test.defaultSourceSet.dependsOn(sourceSets.darwinTest)
@@ -105,6 +103,12 @@ kotlin {
 				target.compilations.main.defaultSourceSet.dependsOn(sourceSets.unspecializedMain)
 			}
 		}
+	}
+}
+
+plugins.withType(NodeJsRootPlugin).configureEach {
+	kotlinNodeJs {
+		nodeVersion = '20.0.0'
 	}
 }
 
@@ -119,7 +123,10 @@ tasks.withType(JavaCompile).configureEach {
 
 tasks.withType(KotlinCompilationTask).configureEach {
 	compilerOptions {
-		allWarningsAsErrors = true
+		// > Task :compileTestKotlinWasmJs FAILED
+		// w: duplicate library name: kotlin
+		allWarningsAsErrors = !name.containsIgnoreCase("wasm")
+		freeCompilerArgs.add('-Xexpect-actual-classes')
 	}
 }
 
