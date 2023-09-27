@@ -1,0 +1,27 @@
+apply plugin: 'org.jetbrains.kotlin.multiplatform'
+apply plugin: 'org.jetbrains.kotlin.plugin.allopen'
+apply plugin: 'org.jetbrains.kotlinx.benchmark'
+
+allOpen {
+	annotation("org.openjdk.jmh.annotations.State")
+}
+
+kotlin {
+	jvm()
+	js().nodejs()
+
+	sourceSets {
+		commonMain {
+			dependencies {
+				implementation("org.jetbrains.kotlinx:kotlinx-benchmark-runtime:0.4.4")
+			}
+		}
+	}
+}
+
+benchmark {
+	targets {
+		register("jvm")
+		register("js")
+	}
+}
