@@ -108,7 +108,7 @@ kotlin {
 
 plugins.withType(NodeJsRootPlugin).configureEach {
 	kotlinNodeJs {
-		nodeVersion = '20.0.0'
+		nodeVersion = '21.1.0'
 	}
 }
 
