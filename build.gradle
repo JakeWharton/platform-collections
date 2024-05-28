@@ -106,12 +106,6 @@ kotlin {
 	}
 }
 
-plugins.withType(NodeJsRootPlugin).configureEach {
-	kotlinNodeJs {
-		nodeVersion = '20.0.0'
-	}
-}
-
 tasks.withType(KotlinJvmCompile).configureEach {
 	compilerOptions.jvmTarget = JvmTarget.JVM_1_8
 }
