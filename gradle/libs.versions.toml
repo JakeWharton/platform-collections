@@ -6,5 +6,5 @@ kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", ve
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 
 dokka-gradlePlugin = "org.jetbrains.dokka:dokka-gradle-plugin:1.9.20"
-gradleMavenPublishPlugin = "com.vanniktech:gradle-maven-publish-plugin:0.29.0"
+gradleMavenPublishPlugin = "com.vanniktech:gradle-maven-publish-plugin:0.30.0"
 assertk = "com.willowtreeapps.assertk:assertk:0.28.1"
