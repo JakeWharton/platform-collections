@@ -4,6 +4,13 @@ A set of Kotlin collections for use as implementation details inside other types
 These collections try and map to the most efficient representation on each platform.
 They do not conform to Kotlin's standard collection interfaces by default.
 
+Experimental, and all that...
+
+Update:
+This approach works, but for the foreseeable future I'm just one-off implementing only what I need inside other projects for only that project's targets.
+Doing a full collections API across all targets is too challenging and winds up being too restrictive.
+
+
 |             | [`PlatformList<E>`][1] | [`PlatformSet<E>`][2]     | [`PlatformMap<K, V>`][3]   |
 |------------:|------------------------|---------------------------|----------------------------|
 |          JS | [`Array`][4]           | [`Set`][5]                | [`Map`][6]                 |
@@ -26,8 +33,6 @@ They do not conform to Kotlin's standard collection interfaces by default.
  [13]: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/
  [14]: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-linked-hash-set/
  [15]: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-linked-hash-map/
-
-Experimental, and all that...
 
 
 # License
